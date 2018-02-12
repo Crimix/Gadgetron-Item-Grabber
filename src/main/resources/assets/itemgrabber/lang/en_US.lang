@@ -1,0 +1,24 @@
+//Items
+
+//Entities
+
+//Info Items
+
+//Container
+
+//Misc
+itemGroup.itemgrabber=Magnet-o-tronic
+
+
+//Configs
+itemgrabber.config.title=Magnet-o-tronic
+itemgrabber.magnet.speed=Magnet Speed
+itemgrabber.magnet.speed.tooltip=How fast the magnet can attract
+itemgrabber.magnet.range=Magnet Range
+itemgrabber.magnet.range.tooltip=How far the magnet can attract
+
+//Keys
+keys.itemgrabber.category=Magnet-o-tronic
+keys.itemgrabber.on=Toggle Magnet on
+
+//MSG
