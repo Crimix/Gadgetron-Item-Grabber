@@ -14,6 +14,7 @@ public class PacketHandler {
 
 	public static void init() {
 		network.registerMessage(MessageConfigSync.class, MessageConfigSync.class, 1, Side.CLIENT);
+		network.registerMessage(MessageUpdateMagnetState.class, MessageUpdateMagnetState.class, 2, Side.SERVER);
 	}
 
 }

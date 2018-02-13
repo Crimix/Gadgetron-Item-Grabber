@@ -1,6 +1,10 @@
 package com.black_dog20.itemgrabber.proxies;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class ServerProxy extends CommonProxy {
@@ -29,7 +33,7 @@ public class ServerProxy extends CommonProxy {
 	}
 
 	@Override
-	public void registerRenders() {
+	public void registerRendersPreInit() {
 		// TODO Auto-generated method stub
 
 	}
@@ -38,5 +42,11 @@ public class ServerProxy extends CommonProxy {
 	public void ServerRecipes() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void registerRendersInit() {
+		// TODO Auto-generated method stub
+		
 	}
 }

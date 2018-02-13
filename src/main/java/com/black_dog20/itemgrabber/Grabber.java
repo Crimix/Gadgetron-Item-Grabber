@@ -3,6 +3,7 @@ package com.black_dog20.itemgrabber;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -10,7 +11,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetStorage;
 import com.black_dog20.itemgrabber.client.render.BeltRender;
+import com.black_dog20.itemgrabber.handler.CapabilityHandler;
 import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.handler.GuiHandler;
 import com.black_dog20.itemgrabber.handler.PlayerEventHandler;
@@ -35,10 +40,11 @@ public class Grabber {
 
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 		MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
+		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		Proxy.registerKeyBindings();
 		ModItems.init();
 		PacketHandler.init();
-		Proxy.registerRenders();
+		Proxy.registerRendersPreInit();
 
 		LogHelper.info("Pre Initialization Complete!");
 	}
@@ -49,9 +55,8 @@ public class Grabber {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		Proxy.registerKeyInputHandler();
 		Recipes.init();
-		
-		((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default")).addLayer(new BeltRender());
-		((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim")).addLayer(new BeltRender());
+		Proxy.registerRendersInit();
+		CapabilityManager.INSTANCE.register(IMagnetHandler.class, new MagnetStorage(), MagnetHandler.class);
 		
 		LogHelper.info("Initialization Complete!");
 }

@@ -2,6 +2,8 @@ package com.black_dog20.itemgrabber.handler;
 
 import java.util.List;
 
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.client.model.Belt;
 import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.item.ItemMagnet;
@@ -32,10 +34,11 @@ public class PlayerEventHandler {
 	public void OnPlayerUpdate(LivingUpdateEvent event) {
 		if (event.getEntity() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntity();
-			if (player.getHeldItemMainhand().getItem() instanceof ItemMagnet) {
-				ItemMagnet magnet = (ItemMagnet) player.getHeldItemMainhand().getItem();
-				int range = magnet.getRange();
-				double speed = magnet.getSpeed();
+			if(player.world.isRemote) return;
+			IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+			if (mh!= null && mh.getHasMagnetOn()) {
+				int range = 5;
+				double speed = 0.02;
 				List<EntityItem> floatingItems = player.getEntityWorld().getEntitiesWithinAABB(EntityItem.class, 
 								new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range));
 				if (floatingItems.isEmpty())
