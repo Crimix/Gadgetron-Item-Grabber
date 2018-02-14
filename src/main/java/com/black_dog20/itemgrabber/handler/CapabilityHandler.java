@@ -16,7 +16,6 @@ public class CapabilityHandler {
 	@SubscribeEvent 
 	public void addPlayerCapabilities(AttachCapabilitiesEvent<Entity> entity) {
 		if(entity.getObject() instanceof EntityPlayer){
-			if(((EntityPlayer) entity.getObject()).world.isRemote) return;
 			entity.addCapability(new ResourceLocation(Reference.MOD_ID, "MagnetHandler"), new MagnetHandler());
 		}
 	}

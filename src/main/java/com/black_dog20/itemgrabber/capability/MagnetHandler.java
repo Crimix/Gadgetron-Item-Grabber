@@ -1,6 +1,10 @@
 package com.black_dog20.itemgrabber.capability;
 
+import com.black_dog20.itemgrabber.network.PacketHandler;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
+
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -16,11 +20,13 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	private boolean magnetOn = false;
 	private boolean belt = false;
 	private int tier = 0;
+	private boolean dirty = false;
 	
 	
 	@Override
 	public void setHasMagnetOn(boolean hasMagnetOn) {
 		magnetOn = hasMagnetOn;
+		dirty = true;
 	}
 
 	@Override
@@ -31,6 +37,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	@Override
 	public void setHasBelt(boolean hasBelt) {
 		belt = hasBelt;
+		dirty = true;
 	}
 
 	@Override
@@ -41,6 +48,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	@Override
 	public void setTier(int tier) {
 		this.tier = tier;
+		dirty = true;
 	}
 
 	@Override
@@ -53,6 +61,13 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 		other.setHasBelt(belt);
 		other.setHasMagnetOn(magnetOn);
 		other.setTier(tier);
+	}
+	
+	@Override
+	public void updateClient(EntityPlayer player){
+		if(!player.world.isRemote && dirty){
+			PacketHandler.network.sendTo(new MessageSyncMagnetCapability(magnetOn, belt, tier), (EntityPlayerMP) player);
+		}
 	}
 	
 	public static IMagnetHandler instanceFor(EntityPlayer player) { 
