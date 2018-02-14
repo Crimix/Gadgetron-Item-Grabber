@@ -11,6 +11,7 @@ import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.item.ItemMagnet;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
+import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
 import net.minecraft.client.Minecraft;
@@ -22,6 +23,7 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityTracker;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -54,13 +56,20 @@ public class PlayerEventHandler {
 				List<EntityItem> floatingItems = player.getEntityWorld().getEntitiesWithinAABB(EntityItem.class, 
 								new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range), MagnetHelper.NotCheckTags(player));
 				int pulledItems = 0;
-				if (floatingItems.isEmpty())
-					return;
-				for (EntityItem entityItem : floatingItems) {
-					if(pulledItems > 200) break;
-					entityItem.addVelocity((player.posX - entityItem.posX) * speed, (player.posY - entityItem.posY) * speed, (player.posZ - entityItem.posZ) * speed);
-					entityItem.getEntityData().setString("trackBy", player.getName());
-					pulledItems++;
+				if (!floatingItems.isEmpty()){
+					for (EntityItem entityItem : floatingItems) {
+						if(pulledItems > 200) break;
+						entityItem.addVelocity((player.posX - entityItem.posX) * speed, (player.posY - entityItem.posY) * speed, (player.posZ - entityItem.posZ) * speed);
+						entityItem.getEntityData().setString(NBTTags.TRACKED_BY, player.getName());
+						pulledItems++;
+					}
+				}
+				List<EntityXPOrb> floatingXP = player.getEntityWorld().getEntitiesWithinAABB(EntityXPOrb.class, 
+						new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range));
+				if (!floatingXP.isEmpty()){
+					for (EntityXPOrb entityXP : floatingXP) {
+						entityXP.addVelocity((player.posX - entityXP.posX) * speed, (player.posY - entityXP.posY) * speed, (player.posZ - entityXP.posZ) * speed);
+					}
 				}
 			}
 		}
@@ -71,10 +80,10 @@ public class PlayerEventHandler {
 		if(event.world.isRemote) return;
 		for(EntityItem e : event.world.getEntities(EntityItem.class, MagnetHelper.CheckTags())){
 			NBTTagCompound nbt = e.getEntityData();
-			if(nbt.getInteger("countdown") <= 0){
-				nbt.removeTag("countdown");
+			if(nbt.getInteger(NBTTags.PICKUP_IN) <= 0){
+				nbt.removeTag(NBTTags.PICKUP_IN);
 			}else{
-				nbt.setInteger("countdown", (nbt.getInteger("countdown"))-1);
+				nbt.setInteger(NBTTags.PICKUP_IN, (nbt.getInteger(NBTTags.PICKUP_IN))-1);
 			}
 		}
 	}
@@ -82,8 +91,8 @@ public class PlayerEventHandler {
 	@SubscribeEvent
 	public void OnTossItem(ItemTossEvent event){
 		if(event.getPlayer().world.isRemote) return;
-		event.getEntityItem().getEntityData().setInteger("countdown", 100);
-		event.getEntityItem().getEntityData().setString("tossedBy", event.getPlayer().getName());
+		event.getEntityItem().getEntityData().setInteger(NBTTags.PICKUP_IN, 100);
+		event.getEntityItem().getEntityData().setString(NBTTags.DROPPED_BY, event.getPlayer().getName());
 	}
 	
 }
