@@ -20,10 +20,10 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 	
 	public MessageSyncMagnetCapability() {}
 	
-	public MessageSyncMagnetCapability(boolean hasMagnetOn, boolean hasBelt, int tier) {
-		this.hasMagnetOn = hasMagnetOn;
-		this.hasBelt = hasBelt;
-		this.tier = tier;
+	public MessageSyncMagnetCapability(IMagnetHandler mh) {
+		this.hasMagnetOn = mh.getHasMagnetOn();
+		this.hasBelt = mh.getHasBelt();
+		this.tier = mh.getTier();
 	}
 	
 	

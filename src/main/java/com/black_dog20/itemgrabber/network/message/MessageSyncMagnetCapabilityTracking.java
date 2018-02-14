@@ -23,10 +23,10 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 	
 	public MessageSyncMagnetCapabilityTracking() {}
 	
-	public MessageSyncMagnetCapabilityTracking(boolean hasMagnetOn, boolean hasBelt, int tier, EntityPlayer player) {
-		this.hasMagnetOn = hasMagnetOn;
-		this.hasBelt = hasBelt;
-		this.tier = tier;
+	public MessageSyncMagnetCapabilityTracking(IMagnetHandler mh, EntityPlayer player) {
+		this.hasMagnetOn = mh.getHasMagnetOn();
+		this.hasBelt = mh.getHasBelt();
+		this.tier = mh.getTier();
 		id = player.getEntityId();
 	}
 	
@@ -34,7 +34,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 	@Override
 	public IMessage onMessage(MessageSyncMagnetCapabilityTracking message, MessageContext ctx) {
 		Minecraft.getMinecraft().addScheduledTask(() -> {
-			EntityPlayer playerTrack = Grabber.Proxy.getPlayerByIDFromMessageContext(id, ctx);
+			EntityPlayer playerTrack = Grabber.Proxy.getPlayerByIDFromMessageContext(message.id, ctx);
 			IMagnetHandler mh = MagnetHandler.instanceFor(playerTrack);
 			if(mh != null){
 				mh.setHasMagnetOn(message.hasMagnetOn);

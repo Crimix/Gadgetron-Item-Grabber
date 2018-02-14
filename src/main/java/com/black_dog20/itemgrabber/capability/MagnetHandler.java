@@ -2,12 +2,15 @@ package com.black_dog20.itemgrabber.capability;
 
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
 
+import net.minecraft.entity.EntityTracker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
@@ -66,7 +69,9 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	@Override
 	public void updateClient(EntityPlayer player){
 		if(!player.world.isRemote && dirty){
-			PacketHandler.network.sendTo(new MessageSyncMagnetCapability(magnetOn, belt, tier), (EntityPlayerMP) player);
+			PacketHandler.network.sendTo(new MessageSyncMagnetCapability(this), (EntityPlayerMP) player);
+			((WorldServer) player.world).getEntityTracker().sendToTracking(player, PacketHandler.network.getPacketFrom(new MessageSyncMagnetCapabilityTracking(this, player)));
+			dirty = false;
 		}
 	}
 	
