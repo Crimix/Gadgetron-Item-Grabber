@@ -1,0 +1,39 @@
+//Items
+
+//Entities
+
+//Info Items
+
+//Container
+
+//Misc
+itemGroup.itemgrabber=Gadgetron: Item Grabber
+
+
+//Configs
+itemgrabber.config.title=Gadgetron: Item Grabber
+itemgrabber.config.speed.tooltip=How fast the magnet can attract
+itemgrabber.config.range.tooltip=How far the magnet can attract
+itemgrabber.config.client=Client Settings
+itemgrabber.config.client.tooltip=Sneak setting affects the magnet on a server
+itemgrabber.config.server=Server Settings
+itemgrabber.config.server.tooltip=Gets sync to clients
+itemgrabber.config.sneak=Sneak deactivate
+itemgrabber.config.sneak.tooltip=If sneaking deactivates the magnet temporarily
+itemgrabber.config.blockpersec=Blocks/Sec
+itemgrabber.config.blockpersec.tooltip=If the speed should be shown in blocks/tick or blocks/sec
+itemgrabber.config.iconpos=Icon Position
+itemgrabber.config.iconpos.tooltip=Icon position for the magnet active icon
+itemgrabber.config.iconpos.x=x pos
+itemgrabber.config.iconpos.x.tooltip=The x position
+itemgrabber.config.iconpos.y=y pos
+itemgrabber.config.iconpos.y.tooltip=The y position
+
+
+
+//Keys
+keys.itemgrabber.category=Gadgetron: Item Grabber
+keys.itemgrabber.on=Toggle magnet state
+keys.itemgrabber.take_off=Take belt off
+
+//MSG
