@@ -31,7 +31,7 @@ public class JEIPlugin extends BlankModPlugin{
 	@Override
 	public void register(IModRegistry registry) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModItems.belt));
+		list.add(new ItemStack(ModItems.magnetT1));
 		
 		for(ItemStack stack : list)
 				registry.addIngredientInfo(stack, ItemStack.class, I18n.format(stack.getItem().getUnlocalizedName()+".info"));

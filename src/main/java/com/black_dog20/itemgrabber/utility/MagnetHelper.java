@@ -5,9 +5,13 @@ import java.util.List;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
+import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.init.ModItems;
+import com.black_dog20.itemgrabber.item.ItemMagnet;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
@@ -36,6 +40,28 @@ public class MagnetHelper {
 		return ((x) -> {
 			return x.getEntityData().hasKey(NBTTags.PICKUP_IN);
 		});
+	}
+	
+	public static int getRange(EntityPlayer player){
+		int result = 0;
+		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT1))){
+			result = ModConfig.getRange(((ItemMagnet)ModItems.magnetT1).getTier());
+		}
+		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2))){
+			result = ModConfig.getRange(((ItemMagnet)ModItems.magnetT2).getTier());
+		}
+		return result;
+	}
+	
+	public static double getSpeed(EntityPlayer player){
+		double result = 0;
+		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT1))){
+			result = ModConfig.getSpeed(((ItemMagnet)ModItems.magnetT1).getTier());
+		}
+		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2))){
+			result = ModConfig.getSpeed(((ItemMagnet)ModItems.magnetT2).getTier());
+		}
+		return result;
 	}
 
 }

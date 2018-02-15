@@ -32,7 +32,7 @@ public class ItemBase extends Item implements IItemModelRegister{
 
 		this();
 		this.setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		this.setUnlocalizedName(name);
+		this.setUnlocalizedName(this.getRegistryName().toString());
 	}
 
 	public ItemBase() {
@@ -48,20 +48,6 @@ public class ItemBase extends Item implements IItemModelRegister{
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-
-//	@Override
-//	public String getUnlocalizedName() {
-//		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-//	}
-//
-//	@Override
-//	public String getUnlocalizedName(ItemStack itemStack) {
-//		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-//	}
-
-	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
-		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-	}
 
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack item, EntityPlayer player, List<String> list, boolean bool, String text) {

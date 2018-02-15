@@ -1,10 +1,9 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "gadgetronig:items/magnettier1"
+        "layer0": "gadgetronig:items/magnettier2"
     },
     "overrides": [
         { "predicate": { "state": 0 }, "model": "gadgetronig:item/itemmagnetoff" }
     ]
-    
 }

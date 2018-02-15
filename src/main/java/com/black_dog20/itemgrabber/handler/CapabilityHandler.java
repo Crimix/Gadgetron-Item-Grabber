@@ -2,8 +2,10 @@ package com.black_dog20.itemgrabber.handler;
 
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
+import com.black_dog20.itemgrabber.network.message.MessageUpdateSneakState;
 import com.black_dog20.itemgrabber.reference.Reference;
 
 import net.minecraft.entity.Entity;
@@ -21,7 +23,6 @@ public class CapabilityHandler {
 	public void addPlayerCapabilities(AttachCapabilitiesEvent<Entity> entity) {
 		if(entity.getObject() instanceof EntityPlayer){
 			entity.addCapability(new ResourceLocation(Reference.MOD_ID, "MagnetHandler"), new MagnetHandler());
-			System.out.println("he");
 		}
 	}
 
@@ -55,6 +56,15 @@ public class CapabilityHandler {
 				if(mh != null){
 					mh.updateClient(player);
 				}
+			}
+			if(player.world.isRemote){
+				IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+				if(mh != null){
+					if( mh.getSneakDeactivate() != ModConfig.client.sneak){
+						PacketHandler.network.sendToServer(new MessageUpdateSneakState(ModConfig.client.sneak));
+					}
+				}
+				
 			}
 		}
 	}

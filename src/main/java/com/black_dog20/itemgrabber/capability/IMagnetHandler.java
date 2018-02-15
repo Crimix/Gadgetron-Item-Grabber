@@ -8,6 +8,6 @@ public interface IMagnetHandler extends IBaseCapability<IMagnetHandler> {
 	boolean getHasBelt();
 	void setTier(int tier);
 	int getTier();
-	
-	
+	void setSneakDeactivate(boolean sneakDeactivate);
+	boolean getSneakDeactivate();
 }

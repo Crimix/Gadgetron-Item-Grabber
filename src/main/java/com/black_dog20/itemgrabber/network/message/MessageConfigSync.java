@@ -13,7 +13,7 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 
 	@Override
 	public IMessage onMessage(MessageConfigSync message, MessageContext context) {
-		Grabber.instance.Proxy.ServerRecipes();
+
 		return null;
 	}
 
@@ -21,12 +21,19 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-
+		buf.writeInt(ModConfig.server.rangeT1);
+		buf.writeDouble(ModConfig.server.speedT1);
+		buf.writeInt(ModConfig.server.rangeT2);
+		buf.writeDouble(ModConfig.server.speedT2);
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		ModConfig.changeConfigServer(true);
-
+		int rangeT1 = buf.readInt();
+		double speedT1 = buf.readDouble();
+		int rangeT2 = buf.readInt();
+		double speedT2 = buf.readDouble();
+		ModConfig.syncServerSettings(rangeT1, speedT1, rangeT2, speedT2);
 	}
 }

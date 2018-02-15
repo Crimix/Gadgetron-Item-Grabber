@@ -16,17 +16,19 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHandler<MessageSyncMagnetCapabilityTracking, IMessage>{
 
-	boolean hasMagnetOn;
-	boolean hasBelt;
-	int tier;
-	int id;
+	private boolean hasMagnetOn;
+	private boolean hasBelt;
+	private int tier;
+	private int id;
+	private boolean sneak;
 	
 	public MessageSyncMagnetCapabilityTracking() {}
 	
 	public MessageSyncMagnetCapabilityTracking(IMagnetHandler mh, EntityPlayer player) {
-		this.hasMagnetOn = mh.getHasMagnetOn();
-		this.hasBelt = mh.getHasBelt();
-		this.tier = mh.getTier();
+		hasMagnetOn = mh.getHasMagnetOn();
+		hasBelt = mh.getHasBelt();
+		tier = mh.getTier();
+		sneak = mh.getSneakDeactivate();
 		id = player.getEntityId();
 	}
 	
@@ -40,10 +42,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 				mh.setHasMagnetOn(message.hasMagnetOn);
 				mh.setHasBelt(message.hasBelt);
 				mh.setTier(message.tier);
-				System.out.println("yes");
-			}
-			else{
-				System.out.println("damn");
+				mh.setSneakDeactivate(message.sneak);
 			}
 		});
 		return null;
@@ -55,6 +54,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 		hasBelt = buf.readBoolean();
 		tier = buf.readInt();
 		id = buf.readInt();
+		sneak = buf.readBoolean();
 	}
 
 	@Override
@@ -63,6 +63,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 		buf.writeBoolean(hasBelt);
 		buf.writeInt(tier);
 		buf.writeInt(id);
+		buf.writeBoolean(sneak);
 	}
 
 }

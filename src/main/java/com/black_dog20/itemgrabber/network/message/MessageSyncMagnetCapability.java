@@ -14,9 +14,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<MessageSyncMagnetCapability, IMessage>{
 
-	boolean hasMagnetOn;
-	boolean hasBelt;
-	int tier;
+	private boolean hasMagnetOn;
+	private boolean hasBelt;
+	private int tier;
+	private boolean sneak;
 	
 	public MessageSyncMagnetCapability() {}
 	
@@ -24,6 +25,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 		this.hasMagnetOn = mh.getHasMagnetOn();
 		this.hasBelt = mh.getHasBelt();
 		this.tier = mh.getTier();
+		sneak = mh.getSneakDeactivate();
 	}
 	
 	
@@ -36,6 +38,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 				mh.setHasMagnetOn(message.hasMagnetOn);
 				mh.setHasBelt(message.hasBelt);
 				mh.setTier(message.tier);
+				mh.setSneakDeactivate(message.sneak);
 			}
 		});
 		return null;
@@ -46,6 +49,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 		hasMagnetOn = buf.readBoolean();
 		hasBelt = buf.readBoolean();
 		tier = buf.readInt();
+		sneak = buf.readBoolean();
 	}
 
 	@Override
@@ -53,6 +57,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 		buf.writeBoolean(hasMagnetOn);
 		buf.writeBoolean(hasBelt);
 		buf.writeInt(tier);
+		buf.writeBoolean(sneak);
 	}
 
 }

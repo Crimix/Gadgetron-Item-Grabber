@@ -17,15 +17,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModItems {
 	
-	public static final Item belt = new ItemBelt();
-	public static final Item magnetT1 = new ItemMagnet("ItemMagnetT1",5,0.02);;
+	//public static final Item belt = new ItemBelt();
+	public static final Item magnetT1 = new ItemMagnet("ItemMagnetT1",1);
+	public static final Item magnetT2 = new ItemMagnet("ItemMagnetT2",2);
 	
 	
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> evt) {
 		IForgeRegistry<Item> r = evt.getRegistry();
 
-		r.register(belt);
+		//r.register(belt);
 		r.register(magnetT1);
+		r.register(magnetT2);
 	}
 }

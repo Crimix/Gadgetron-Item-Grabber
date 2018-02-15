@@ -21,6 +21,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	@CapabilityInject(IMagnetHandler.class) 
 	public static final Capability<IMagnetHandler> CAP = null;
 	private boolean magnetOn = false;
+	private boolean sneakDeactivate = false;
 	private boolean belt = false;
 	private int tier = 0;
 	private boolean dirty = false;
@@ -35,6 +36,17 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	@Override
 	public boolean getHasMagnetOn() {
 		return magnetOn;
+	}
+	
+	@Override
+	public void setSneakDeactivate(boolean sneakDeactivate) {
+		this.sneakDeactivate = sneakDeactivate;
+		dirty = true;
+	}
+
+	@Override
+	public boolean getSneakDeactivate() {
+		return sneakDeactivate;
 	}
 
 	@Override
@@ -64,6 +76,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 		other.setHasBelt(belt);
 		other.setHasMagnetOn(magnetOn);
 		other.setTier(tier);
+		other.setSneakDeactivate(sneakDeactivate);
 	}
 	
 	@Override

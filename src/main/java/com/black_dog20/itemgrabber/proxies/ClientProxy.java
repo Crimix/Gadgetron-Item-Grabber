@@ -10,9 +10,11 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
+import com.black_dog20.itemgrabber.client.gui.GuiMagnetIcon;
 import com.black_dog20.itemgrabber.client.handler.KeyInputEventHandler;
 import com.black_dog20.itemgrabber.client.render.BeltRender;
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
+import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.init.ModBlocks;
 import com.black_dog20.itemgrabber.init.ModItems;
 
@@ -22,7 +24,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerKeyBindings() {
 		ClientRegistry.registerKeyBinding(Keybindings.ON);
-		ClientRegistry.registerKeyBinding(Keybindings.TAKE_OFF);
+		//ClientRegistry.registerKeyBinding(Keybindings.TAKE_OFF);
 	}
 
 	@Override
@@ -56,6 +58,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRendersPreInit() {
 		//ModItems.initModels();
 		ModBlocks.initModels();
+		MinecraftForge.EVENT_BUS.register(new GuiMagnetIcon());
 	}
 	
 	@Override
@@ -72,6 +75,7 @@ public class ClientProxy extends CommonProxy {
 		((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default")).addLayer(new BeltRender());
 		((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim")).addLayer(new BeltRender());
 	}
+
 
 
 }

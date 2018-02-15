@@ -17,6 +17,7 @@ public class PacketHandler {
 		network.registerMessage(MessageUpdateMagnetState.class, MessageUpdateMagnetState.class, 2, Side.SERVER);
 		network.registerMessage(MessageSyncMagnetCapability.class, MessageSyncMagnetCapability.class, 3, Side.CLIENT);
 		network.registerMessage(MessageSyncMagnetCapabilityTracking.class, MessageSyncMagnetCapabilityTracking.class, 4, Side.CLIENT);
+		network.registerMessage(MessageUpdateSneakState.class, MessageUpdateSneakState.class, 5, Side.SERVER);
 	}
 
 }
