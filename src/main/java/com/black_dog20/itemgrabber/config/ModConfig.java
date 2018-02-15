@@ -13,17 +13,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModConfig {
 	
 	private static boolean configurationServer = false;
+	private static final Server onlineServer = new Server();
 	
-	@Config.Name("Magnet Speed")
-	@Config.LangKey("itemgrabber.magnet.speed")
-	@Config.RangeDouble(min = 0.02, max = 0.2)
-	public static double SPEED = 0.02;
-	
-	@Config.Name("Magnet Range")
-	@Config.LangKey("itemgrabber.magnet.range")
-	@Config.RangeInt(min = 5, max = 15)
-	public static int RANGE = 5;
-	
+	public static final Client client = new Client();
+
+	public static final Server server = new Server();
 	
 	
 	@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
@@ -45,5 +39,14 @@ public class ModConfig {
 	public static void changeConfigServer(boolean value){
 		configurationServer = value;
 	}
+	
+	public static int getRange(int tier){
+		return 0;
+	}
+	
+	public static double getSpeed(int tier){
+		return 0;
+	}
+	
 
 }

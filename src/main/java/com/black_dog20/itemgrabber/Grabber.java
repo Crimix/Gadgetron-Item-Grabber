@@ -42,7 +42,6 @@ public class Grabber {
 		MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		Proxy.registerKeyBindings();
-		ModItems.init();
 		PacketHandler.init();
 		Proxy.registerRendersPreInit();
 

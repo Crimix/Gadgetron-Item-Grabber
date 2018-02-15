@@ -54,7 +54,7 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRendersPreInit() {
-		ModItems.initModels();
+		//ModItems.initModels();
 		ModBlocks.initModels();
 	}
 	
