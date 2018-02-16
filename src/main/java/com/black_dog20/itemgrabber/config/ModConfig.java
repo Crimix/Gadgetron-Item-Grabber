@@ -1,12 +1,12 @@
 package com.black_dog20.itemgrabber.config;
 
-import com.black_dog20.itemgrabber.reference.Reference;
-
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import com.black_dog20.itemgrabber.reference.Reference;
 
 @Config(modid = Reference.MOD_ID)
 @Config.LangKey("gadgetronig.config.title")

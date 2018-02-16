@@ -1,22 +1,16 @@
 package com.black_dog20.itemgrabber.proxies;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
 import com.black_dog20.itemgrabber.client.gui.GuiMagnetIcon;
 import com.black_dog20.itemgrabber.client.handler.KeyInputEventHandler;
-import com.black_dog20.itemgrabber.client.render.BeltRender;
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
-import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.init.ModBlocks;
-import com.black_dog20.itemgrabber.init.ModItems;
 
 
 public class ClientProxy extends CommonProxy {

@@ -2,29 +2,19 @@ package com.black_dog20.itemgrabber.item;
 
 import java.util.List;
 
-
-
-
-
-
-
-
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 //import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.black_dog20.itemgrabber.client.render.IItemModelRegister;
 import com.black_dog20.itemgrabber.creativetab.CreativeTabGTIG;
 import com.black_dog20.itemgrabber.reference.Reference;
-
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBase extends Item implements IItemModelRegister{
 

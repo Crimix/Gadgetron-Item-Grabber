@@ -1,8 +1,8 @@
 package com.black_dog20.itemgrabber.init;
 
-import com.black_dog20.itemgrabber.reference.Reference;
-
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import com.black_dog20.itemgrabber.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class Recipes {

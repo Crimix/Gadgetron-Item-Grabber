@@ -4,7 +4,11 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-import com.black_dog20.itemgrabber.network.message.*;
+import com.black_dog20.itemgrabber.network.message.MessageConfigSync;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
+import com.black_dog20.itemgrabber.network.message.MessageUpdateMagnetState;
+import com.black_dog20.itemgrabber.network.message.MessageUpdateSneakState;
 import com.black_dog20.itemgrabber.reference.Reference;
 
 

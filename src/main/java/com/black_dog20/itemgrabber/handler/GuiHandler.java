@@ -4,8 +4,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
-import com.black_dog20.itemgrabber.Grabber;
-
 
 public class GuiHandler implements IGuiHandler {
 

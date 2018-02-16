@@ -5,7 +5,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import com.black_dog20.itemgrabber.Grabber;
 import com.black_dog20.itemgrabber.config.ModConfig;
 
 

@@ -1,11 +1,5 @@
 package com.black_dog20.itemgrabber.client.gui;
 
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.config.ModConfig;
-import com.black_dog20.itemgrabber.reference.Reference;
-import com.black_dog20.itemgrabber.utility.MagnetHelper;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,6 +10,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.reference.Reference;
+import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
 public class GuiMagnetIcon extends Gui{
 	private Minecraft mc;
