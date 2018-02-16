@@ -30,20 +30,34 @@ public class ModConfig {
 		public boolean blockPerSec = false;
 		
 		@Config.LangKey("gadgetronig.config.iconpos")
-		public final HUDPos iconHUDPos = new HUDPos(0, 0);
+		public final HUDPos iconHUDPos = new HUDPos();
 		
 		public static class HUDPos {
-			public HUDPos(final int x, final int y) {
-				this.x = x;
-				this.y = y;
-			}
 
+			@Config.LangKey("gadgetronig.config.iconpos.position")
+			public position pos = position.Top_Left;
+			
+			@Config.LangKey("gadgetronig.config.iconpos.hide")
+			public boolean hide = false;
+			
 			@Config.LangKey("gadgetronig.config.iconpos.x")
-			public int x;
+			public int x = 0;
 
 			@Config.LangKey("gadgetronig.config.iconpos.y")
-			public int y;
+			public int y = 0;
 		}
+	}
+
+	public enum position {
+		Top_Left,
+		Center_Left,
+		Bottom_Left,
+		Top_Middle,
+		Center_Middle,
+		Bottom_Middle,
+		Top_Right,
+		Center_Right,
+		Bottom_Right
 	}
 	
 	public static class Server {

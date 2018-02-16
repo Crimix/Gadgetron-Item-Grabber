@@ -1,5 +1,6 @@
 //Items
-item.gadgetronig:itemmagnett1.name=Magnet
+item.gadgetronig:itemmagnett1.name=Item grabber V1
+item.gadgetronig:itemmagnett2.name=Item grabber V2
 //Info Items
 
 //Entities
@@ -12,28 +13,31 @@ itemGroup.gadgetronig=Gadgetron: Item Grabber
 
 //Configs
 gadgetronig.config.title=Gadgetron: Item Grabber
-gadgetronig.config.speed.tooltip=How fast the magnet can attract
-gadgetronig.config.range.tooltip=How far the magnet can attract
+gadgetronig.config.speed.tooltip=How fast the item grabber can attract
+gadgetronig.config.range.tooltip=How far the item grabber can attract
 gadgetronig.config.client=Client Settings
-gadgetronig.config.client.tooltip=Sneak setting affects the magnet on a server
+gadgetronig.config.client.tooltip=Sneak setting affects the item grabber on a server
 gadgetronig.config.server=Server Settings
 gadgetronig.config.server.tooltip=Gets sync to clients
 gadgetronig.config.sneak=Sneak deactivate
-gadgetronig.config.sneak.tooltip=If sneaking deactivates the magnet temporarily
+gadgetronig.config.sneak.tooltip=If sneaking deactivates the item grabber temporarily
 gadgetronig.config.blockpersec=Blocks/sec
 gadgetronig.config.blockpersec.tooltip=If the speed should be shown in blocks/tick or blocks/sec
 gadgetronig.config.iconpos=Icon Position
-gadgetronig.config.iconpos.tooltip=Icon position for the magnet active icon
-gadgetronig.config.iconpos.x=x pos
-gadgetronig.config.iconpos.x.tooltip=The x position
-gadgetronig.config.iconpos.y=y pos
-gadgetronig.config.iconpos.y.tooltip=The y position
+gadgetronig.config.iconpos.tooltip=Icon position for the active icon
+gadgetronig.config.iconpos.x=Width offset
+gadgetronig.config.iconpos.x.tooltip=The width position offset
+gadgetronig.config.iconpos.y=Height offset
+gadgetronig.config.iconpos.y.tooltip=The height position offset
+gadgetronig.config.iconpos.hide=Hide icon
+gadgetronig.config.iconpos.hide.tooltip=Hides the icon
+gadgetronig.config.iconpos.position=Icon position
 
 
 
 //Keys
 keys.gadgetronig.category=Gadgetron: Item Grabber
-keys.gadgetronig.on=Toggle magnet state
+keys.gadgetronig.on=Toggle item grabber state
 keys.gadgetronig.take_off=Take belt off
 
 //MSG

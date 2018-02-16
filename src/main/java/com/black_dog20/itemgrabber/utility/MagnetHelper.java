@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -61,6 +62,14 @@ public class MagnetHelper {
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2))){
 			result = ModConfig.getSpeed(((ItemMagnet)ModItems.magnetT2).getTier());
 		}
+		return result;
+	}
+	
+	public static boolean hasMagnetInInventory(EntityPlayer player){
+		boolean result = false;
+		InventoryPlayer ip = player.inventory;
+		result = ip.hasItemStack(new ItemStack(ModItems.magnetT1)) && !result ? true : result;
+		result = ip.hasItemStack(new ItemStack(ModItems.magnetT2)) && !result ? true : result;
 		return result;
 	}
 

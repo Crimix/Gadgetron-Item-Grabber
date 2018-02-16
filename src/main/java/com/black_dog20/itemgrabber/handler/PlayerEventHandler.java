@@ -57,7 +57,7 @@ public class PlayerEventHandler {
 			IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
 			int range = 0;
 			double speed = 0;
-			if (mh!= null && mh.getHasMagnetOn()) {	
+			if (mh!= null && mh.getHasMagnetOn() && !(mh.getSneakDeactivate() && player.isSneaking())) {	
 				range = MagnetHelper.getRange(player);
 				speed = MagnetHelper.getSpeed(player);
 				if(range != 0){
