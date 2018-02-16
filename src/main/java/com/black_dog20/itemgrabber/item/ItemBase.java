@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import com.black_dog20.itemgrabber.client.render.IItemModelRegister;
-import com.black_dog20.itemgrabber.creativetab.CreativeTabMOT;
+import com.black_dog20.itemgrabber.creativetab.CreativeTabGTIG;
 import com.black_dog20.itemgrabber.reference.Reference;
 
 import net.minecraftforge.client.model.ModelLoader;
@@ -38,7 +38,7 @@ public class ItemBase extends Item implements IItemModelRegister{
 	public ItemBase() {
 
 		super();
-		this.setCreativeTab(CreativeTabMOT.MOT_TAB);
+		this.setCreativeTab(CreativeTabGTIG.TAB);
 
 	}
 	

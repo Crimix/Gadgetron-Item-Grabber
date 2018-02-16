@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack;
 import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.reference.Reference;
 
-public class CreativeTabMOT{
+public class CreativeTabGTIG{
 
-	public static final CreativeTabs MOT_TAB = new CreativeTabs(Reference.MOD_ID.toLowerCase()) {
+	public static final CreativeTabs TAB = new CreativeTabs(Reference.MOD_ID.toLowerCase()) {
 
 		@Override
 		public ItemStack getTabIconItem() {
