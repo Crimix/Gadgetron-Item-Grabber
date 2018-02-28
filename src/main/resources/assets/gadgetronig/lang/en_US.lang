@@ -1,9 +1,21 @@
 //Items
-item.gadgetronig:itemmagnett1.name=Item grabber V1
-item.gadgetronig:itemmagnett2.name=Item grabber V2
+item.gadgetronig:magnett1.name=Item grabber V1
+item.gadgetronig:magnett2.name=Item grabber V2
+
 //Info Items
 
-//Entities
+//Tooltips
+tooltip.gadgetronig:range=Range
+tooltip.gadgetronig:speed=Speed
+tooltip.gadgetronig:blocks=blocks
+tooltip.gadgetronig:sec=sec
+tooltip.gadgetronig:tick=tick
+tooltip.gadgetronig:active=Magnet state
+tooltip.gadgetronig:sneak=Sneak mode
+tooltip.gadgetronig:on=On
+tooltip.gadgetronig:off=Off
+
+tick
 
 //Container
 

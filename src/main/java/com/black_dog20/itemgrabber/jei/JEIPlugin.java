@@ -32,10 +32,25 @@ public class JEIPlugin extends BlankModPlugin{
 	public void register(IModRegistry registry) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		list.add(new ItemStack(ModItems.magnetT1));
+		list.add(new ItemStack(ModItems.magnetT2));
 		
-		for(ItemStack stack : list)
-				registry.addIngredientInfo(stack, ItemStack.class, I18n.format(stack.getItem().getUnlocalizedName()+".info"));
+		for(ItemStack stack : list){
+			String info = getFormattedString(stack);
+			if(info != null){
+				registry.addIngredientInfo(stack, ItemStack.class, info);
+			}
+		}
+				
 		
+	}
+	private String getFormattedString(ItemStack stack){
+		String res = I18n.format(stack.getItem().getUnlocalizedName()+".info");
+		if(res.contains(stack.getItem().getUnlocalizedName())){
+			return null;
+		}
+		else{
+			return res;
+		}
 	}
 
 	@Override
