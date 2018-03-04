@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.config.ServerConfig;
 
 
 public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfigSync, IMessage> {
@@ -28,11 +29,10 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		ModConfig.changeConfigServer(true);
-		int rangeT1 = buf.readInt();
-		double speedT1 = buf.readDouble();
-		int rangeT2 = buf.readInt();
-		double speedT2 = buf.readDouble();
-		ModConfig.syncServerSettings(rangeT1, speedT1, rangeT2, speedT2);
+		ServerConfig.onServer = true;
+		ServerConfig.server.rangeT1 = buf.readInt();
+		ServerConfig.server.speedT1 = buf.readDouble();
+		ServerConfig.server.rangeT2 = buf.readInt();
+		ServerConfig.server.speedT2 = buf.readDouble();
 	}
 }

@@ -17,7 +17,11 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.plateT1, new Object[] { "ara", "rar", "ara", 'a', "ingotAdamantine", 'r', new ItemStack(Items.DYE,1,1) }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.caseT1, new Object[] { "tat", "pcp", "ttt", 't', "ingotTitanium", 'a', "ingotAdamantine", 'p', ModItems.plateT1, 'c', "ingotCarbonox" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.magnetT1, new Object[] { "s", "c", 's', ModItems.screenT1, 'c', ModItems.caseT1 }));
-		
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.coreT2, new Object[] { "rrr", "rcr", "rrr", 'c', ModItems.coreT1 , 'r', "crystalRaritanium" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.screenT2, new Object[] { "ggg", "grg", "ggg", 'g', new ItemStack(Blocks.STAINED_GLASS_PANE, 1,5) , 'r', ModItems.coreT2 }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.plateT2, new Object[] { "aaa", "apa", "aaa", 'a', "ingotAdamantine", 'p', ModItems.plateT1 }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.caseT2, new Object[] { "tat", "pcp", "ttt", 't', "ingotCarbonox", 'a', "ingotAdamantine", 'p', ModItems.plateT2, 'c', ModItems.magnetT1 }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.magnetT2, new Object[] { "s", "c", 's', ModItems.screenT2, 'c', ModItems.caseT2 }));
 	}
 
 }

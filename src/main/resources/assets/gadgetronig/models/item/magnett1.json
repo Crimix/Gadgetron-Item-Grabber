@@ -4,7 +4,7 @@
         "layer0": "gadgetronig:items/magnettier1"
     },
     "overrides": [
-        { "predicate": { "state": 0 }, "model": "gadgetronig:item/magnetoff" }
+        { "predicate": { "state": 0 }, "model": "gadgetronig:item/magnetofft1" }
     ]
     
 }

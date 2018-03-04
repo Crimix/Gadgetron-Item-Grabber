@@ -20,6 +20,10 @@ public class ModItems {
 	public static final Item screenT1 = new ItemBase("screenT1");
 	public static final Item caseT1 = new ItemBase("caseT1");
 	public static final Item plateT1 = new ItemBase("plateT1");
+	public static final Item coreT2 = new ItemBase("coreT2");
+	public static final Item screenT2 = new ItemBase("screenT2");
+	public static final Item caseT2 = new ItemBase("caseT2");
+	public static final Item plateT2 = new ItemBase("plateT2");
 	
 	
 	@SubscribeEvent
@@ -33,5 +37,9 @@ public class ModItems {
 		r.register(screenT1);
 		r.register(caseT1);
 		r.register(plateT1);
+		r.register(coreT2);
+		r.register(screenT2);
+		r.register(caseT2);
+		r.register(plateT2);
 	}
 }

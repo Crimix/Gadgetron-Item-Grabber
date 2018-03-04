@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
+import com.black_dog20.gadgetron.Gadgetron;
+import com.black_dog20.itemgrabber.Grabber;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.item.ItemMagnet;
@@ -46,10 +48,10 @@ public class MagnetHelper {
 	public static int getRange(EntityPlayer player){
 		int result = 0;
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT1))){
-			result = ModConfig.getRange(((ItemMagnet)ModItems.magnetT1).getTier());
+			result = getRange(1);
 		}
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2))){
-			result = ModConfig.getRange(((ItemMagnet)ModItems.magnetT2).getTier());
+			result = getRange(2);
 		}
 		return result;
 	}
@@ -57,13 +59,38 @@ public class MagnetHelper {
 	public static double getSpeed(EntityPlayer player){
 		double result = 0;
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT1))){
-			result = ModConfig.getSpeed(((ItemMagnet)ModItems.magnetT1).getTier());
+			result = getSpeed(1);
 		}
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2))){
-			result = ModConfig.getSpeed(((ItemMagnet)ModItems.magnetT2).getTier());
+			result = getSpeed(2);
 		}
 		return result;
 	}
+	
+	public static double getSpeed(int tier){
+		switch (tier) {
+		case 1:
+			return Grabber.Proxy.getServerConfig().speedT1;
+		case 2:
+			return Grabber.Proxy.getServerConfig().speedT2;
+			
+		default:
+			return 0;
+		}
+	}
+	
+	public static int getRange(int tier){
+		switch (tier) {
+		case 1:
+			return Grabber.Proxy.getServerConfig().rangeT1;
+		case 2:
+			return Grabber.Proxy.getServerConfig().rangeT2;
+			
+		default:
+			return 0;
+		}
+	}
+	
 	
 	public static boolean hasMagnetInInventory(EntityPlayer player){
 		boolean result = false;

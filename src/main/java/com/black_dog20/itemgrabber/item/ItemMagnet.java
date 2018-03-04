@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
 public class ItemMagnet extends ItemBase{
 
@@ -67,11 +68,11 @@ public class ItemMagnet extends ItemBase{
 			tooltip.add(active.getFormattedText() + ": " + activeState.getFormattedText());
 			tooltip.add(sneak.getFormattedText() + ": " + sneakState.getFormattedText());
 		}
-		tooltip.add(range.getFormattedText() + ": " + ModConfig.getRange(tier) + " " + blocks.getFormattedText());
+		tooltip.add(range.getFormattedText() + ": " + MagnetHelper.getRange(tier) + " " + blocks.getFormattedText());
 		if(ModConfig.client.blockPerSec)
-			tooltip.add(speed.getFormattedText() + ": "+ (ModConfig.getSpeed(tier)*20) + " " + blocks.getFormattedText() + "/" + sec.getFormattedText());
+			tooltip.add(speed.getFormattedText() + ": "+ (MagnetHelper.getSpeed(tier)*20) + " " + blocks.getFormattedText() + "/" + sec.getFormattedText());
 		else
-			tooltip.add(speed.getFormattedText() + ": " + ModConfig.getSpeed(tier) + " " + blocks.getFormattedText() + "/" + tick.getFormattedText());
+			tooltip.add(speed.getFormattedText() + ": " + MagnetHelper.getSpeed(tier) + " " + blocks.getFormattedText() + "/" + tick.getFormattedText());
 		
 
 	}	

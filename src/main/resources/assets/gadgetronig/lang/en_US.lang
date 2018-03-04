@@ -1,6 +1,14 @@
 //Items
 item.gadgetronig:magnett1.name=Item grabber V1
 item.gadgetronig:magnett2.name=Item grabber V2
+item.gadgetronig:coret1.name=Magnetic core V1
+item.gadgetronig:coret2.name=Magnetic core V2
+item.gadgetronig:screent1.name=Screen V1
+item.gadgetronig:screent2.name=Screen V2
+item.gadgetronig:platet1.name=Button plate V1
+item.gadgetronig:platet2.name=Button plate V2
+item.gadgetronig:caset1.name=Casing V1
+item.gadgetronig:caset2.name=Casing V2
 
 //Info Items
 

@@ -10,6 +10,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import com.black_dog20.itemgrabber.client.gui.GuiMagnetIcon;
 import com.black_dog20.itemgrabber.client.handler.KeyInputEventHandler;
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
+import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.config.Server;
+import com.black_dog20.itemgrabber.config.ServerConfig;
 import com.black_dog20.itemgrabber.init.ModBlocks;
 
 
@@ -50,18 +53,12 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRendersPreInit() {
-		//ModItems.initModels();
 		ModBlocks.initModels();
 		MinecraftForge.EVENT_BUS.register(new GuiMagnetIcon());
 	}
 	
 	@Override
 	public void ServerRecipes() {
-//		TucsRegistry.RemoveRecipe(ModItems.Unbreaking3Upgrade);
-//		Recipes.Upgrades();
-//
-//		LogHelper.info("removed " + TucsRegistry.number + " recipes");
-//		TucsRegistry.number = 0;
 	}
 
 	@Override
@@ -70,6 +67,12 @@ public class ClientProxy extends CommonProxy {
 		//((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim")).addLayer(new BeltRender());
 	}
 
-
+	@Override
+	public Server getServerConfig(){
+		if(ServerConfig.onServer)
+			return ServerConfig.server;
+		else
+			return ModConfig.server;
+	}
 
 }
