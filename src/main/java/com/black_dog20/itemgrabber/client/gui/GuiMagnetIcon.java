@@ -2,6 +2,7 @@ package com.black_dog20.itemgrabber.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
@@ -28,7 +29,7 @@ public class GuiMagnetIcon extends Gui{
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onRender(RenderGameOverlayEvent.Post event) {
-		if (event.isCanceled() || event.getType() != ElementType.FOOD || ModConfig.client.iconHUDPos.hide) return;
+		if (event.isCanceled() || event.getType() != ElementType.ALL || ModConfig.client.iconHUDPos.hide || mc.currentScreen instanceof GuiChat) return;
 		int width = event.getResolution().getScaledWidth();
         int height = event.getResolution().getScaledHeight();
         int xPos = 0;
