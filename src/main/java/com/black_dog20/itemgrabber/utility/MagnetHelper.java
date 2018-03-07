@@ -10,11 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
-import com.black_dog20.gadgetron.Gadgetron;
 import com.black_dog20.itemgrabber.Grabber;
-import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.init.ModItems;
-import com.black_dog20.itemgrabber.item.ItemMagnet;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;

@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -26,8 +27,8 @@ public class GuiMagnetIcon extends Gui{
 	}
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL)
-	public void onRender(RenderGameOverlayEvent event) {
-		if (event.isCanceled() ||  ModConfig.client.iconHUDPos.hide) return;
+	public void onRender(RenderGameOverlayEvent.Post event) {
+		if (event.isCanceled() || event.getType() != ElementType.FOOD || ModConfig.client.iconHUDPos.hide) return;
 		int width = event.getResolution().getScaledWidth();
         int height = event.getResolution().getScaledHeight();
         int xPos = 0;

@@ -2,8 +2,6 @@ package com.black_dog20.itemgrabber.proxies;
 
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.config.Server;
-import com.black_dog20.itemgrabber.config.ServerConfig;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
