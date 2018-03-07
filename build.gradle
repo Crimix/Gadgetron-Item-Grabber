@@ -34,6 +34,9 @@ minecraft {
 	}
 	
     mappings = mcp_mappings
+    
+    replace "@VERSION@", project.version
+    replaceIn "src/main/java/com/black_dog20/itemgrabber/reference/Reference.java"
 }
 
 configurations { //Such that libs dependencies they get added to the classpath
