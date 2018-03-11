@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
@@ -62,6 +63,16 @@ public class PlayerEventHandler {
 	public void onPlayerLogin(PlayerLoggedInEvent event){
 		if(!event.player.world.isRemote){
 			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
+		}
+	}
+	
+	@SubscribeEvent
+	public void onItemPickup(EntityItemPickupEvent event){
+		if(!event.getEntity().world.isRemote){
+			NBTTagCompound nbt = event.getEntity().getEntityData();
+			nbt.removeTag(NBTTags.PICKUP_IN);
+			nbt.removeTag(NBTTags.DROPPED_BY);
+			nbt.removeTag(NBTTags.TRACKED_BY);
 		}
 	}
 	
