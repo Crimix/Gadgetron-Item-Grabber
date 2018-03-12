@@ -1,6 +1,7 @@
 package com.black_dog20.itemgrabber.proxies;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -9,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import com.black_dog20.itemgrabber.client.gui.GuiMagnetIcon;
 import com.black_dog20.itemgrabber.client.handler.KeyInputEventHandler;
+import com.black_dog20.itemgrabber.client.render.BeltRender;
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.config.Server;
@@ -63,8 +65,8 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRendersInit() {
-		//((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default")).addLayer(new BeltRender());
-		//((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim")).addLayer(new BeltRender());
+		((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("default")).addLayer(new BeltRender());
+		((RenderPlayer)Minecraft.getMinecraft().getRenderManager().getSkinMap().get("slim")).addLayer(new BeltRender());
 	}
 
 	@Override

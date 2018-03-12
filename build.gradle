@@ -25,13 +25,7 @@ compileJava {
 
 minecraft {
     version = mcversion + "-" + forge_version
-    if(file('../run').exists()){
-		runDir = "../run/assets"
-	} else if(file('assets').exists()){
-   	 	runDir = "assets"
-	}else{
-		runDir = "eclipse"
-	}
+	runDir = "eclipse/assets"
 	
     mappings = mcp_mappings
     

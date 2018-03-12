@@ -15,29 +15,28 @@ public class Belt extends ModelBase {
     public ModelRenderer left;
 
     public Belt() {
-        this.textureWidth = 32;
-        this.textureHeight = 32;
-        this.back = new ModelRenderer(this, 5, 25);
-        this.back.setRotationPoint(-5.0F, 9.0F, 2.0F);
-        this.back.addBox(0.0F, 0.0F, 0.0F, 10, 1, 1, 0.0F);
+        this.textureWidth = 64;
+        this.textureHeight = 64;
         this.right = new ModelRenderer(this, 20, 17);
-        this.right.setRotationPoint(-5.0F, 9.0F, -2.0F);
-        this.right.addBox(0.0F, 0.0F, 0.0F, 1, 1, 4, 0.0F);
-        this.left = new ModelRenderer(this, 1, 17);
-        this.left.setRotationPoint(4.0F, 9.0F, -2.0F);
-        this.left.addBox(0.0F, 0.0F, 0.0F, 1, 1, 4, 0.0F);
+        this.right.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.right.addBox(-10.0F, 0.0F, -5.0F, 1, 2, 8, 0.0F);
         this.front = new ModelRenderer(this, 3, 10);
-        this.front.setRotationPoint(-5.0F, 9.0F, -3.0F);
-        this.front.addBox(0.0F, 0.0F, 0.0F, 10, 1, 1, 0F);
-
+        this.front.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.front.addBox(-10.0F, 0.0F, -6.0F, 18, 2, 1, 0.0F);
+        this.back = new ModelRenderer(this, 5, 34);
+        this.back.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.back.addBox(-10.0F, 0.0F, 3.0F, 18, 2, 1, 0.0F);
+        this.left = new ModelRenderer(this, 1, 17);
+        this.left.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.left.addBox(7.0F, 0.0F, -5.0F, 1, 2, 8, 0.0F);
     }
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) { 
-        this.left.render(scale);
-        this.right.render(scale);
-        this.back.render(scale);
-        this.front.render(scale);
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
+        this.right.render(f5);
+        this.front.render(f5);
+        this.back.render(f5);
+        this.left.render(f5);
     }
 
     /**

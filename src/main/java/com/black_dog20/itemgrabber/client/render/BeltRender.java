@@ -13,15 +13,19 @@ public class BeltRender implements LayerRenderer<EntityPlayer>{
 	@Override
 	public void doRenderLayer(EntityPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		Belt model = new Belt();
-		float Myscale = 1F;
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mot:textures/models/belt.png"));
+		float Myscale = 0.5F;
+		GlStateManager.pushMatrix();
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("gadgetronig:textures/models/belt.png"));
 		if(player.isSneaking()){
-			GlStateManager.translate(0F, 0.2F, 0F);
+			GlStateManager.translate(0.03F, 0.6F, 0.25F);
 			GlStateManager.rotate(90F / (float) Math.PI, 1.0F, 0.0F, 0.0F);
+		}else {
+			GlStateManager.translate(0.03F, 0.5F, 0.032F);
 		}
 		GlStateManager.scale(Myscale, Myscale, Myscale);
 		model.render(player, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		//player.inventory.hasItemStack(itemStackIn)
+		GlStateManager.popMatrix();
 		
 	}
 
