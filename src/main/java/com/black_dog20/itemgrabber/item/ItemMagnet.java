@@ -13,10 +13,11 @@ import net.minecraft.world.World;
 
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
-public class ItemMagnet extends ItemBase{
+public class ItemMagnet extends ItemBase {
 
 	private int tier;
 	
@@ -46,6 +47,9 @@ public class ItemMagnet extends ItemBase{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
+		TextComponentTranslation press = new TextComponentTranslation("tooltip.gadgetronig:press");
+		
+		TextComponentTranslation activate = new TextComponentTranslation("tooltip.gadgetronig:activate");
 		TextComponentTranslation range = new TextComponentTranslation("tooltip.gadgetronig:range");
 		TextComponentTranslation speed = new TextComponentTranslation("tooltip.gadgetronig:speed");
 		TextComponentTranslation blocks = new TextComponentTranslation("tooltip.gadgetronig:blocks");
@@ -60,6 +64,9 @@ public class ItemMagnet extends ItemBase{
 		on.getStyle().setColor(TextFormatting.GREEN);
 		TextComponentTranslation off = new TextComponentTranslation("tooltip.gadgetronig:off");
 		off.getStyle().setColor(TextFormatting.RED);
+		
+		tooltip.add(press.getFormattedText() + "§9" + Keybindings.ON.getDisplayName() + "§r §7" + activate.getFormattedText()+ "§r");
+		tooltip.add("");
 		
 		IMagnetHandler mh = playerIn.getCapability(MagnetHandler.CAP, null);
 		if(mh != null){

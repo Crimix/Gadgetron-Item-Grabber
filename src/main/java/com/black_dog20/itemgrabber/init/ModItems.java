@@ -7,13 +7,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 import com.black_dog20.itemgrabber.item.ItemBase;
+import com.black_dog20.itemgrabber.item.ItemBelt;
 import com.black_dog20.itemgrabber.item.ItemMagnet;
 import com.black_dog20.itemgrabber.reference.Reference;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModItems {
 	
-	//public static final Item belt = new ItemBelt();
+	public static final Item belt = new ItemBase("belt");
+	public static final Item beltT1 = new ItemBelt("beltT1",1);
+	public static final Item beltT2 = new ItemBelt("beltT2",2);
 	public static final Item magnetT1 = new ItemMagnet("magnetT1",1);
 	public static final Item magnetT2 = new ItemMagnet("magnetT2",2);
 	public static final Item coreT1 = new ItemBase("coreT1");
@@ -30,7 +33,9 @@ public class ModItems {
 	public static void registerItems(RegistryEvent.Register<Item> evt) {
 		IForgeRegistry<Item> r = evt.getRegistry();
 
-		//r.register(belt);
+		r.register(belt);
+		r.register(beltT1);
+		r.register(beltT2);
 		r.register(magnetT1);
 		r.register(magnetT2);
 		r.register(coreT1);

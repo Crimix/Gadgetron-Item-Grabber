@@ -2,16 +2,12 @@ package com.black_dog20.itemgrabber.utility;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 
@@ -29,15 +25,15 @@ public class MagnetHelper {
 	private static final List<ResourceLocation> blackListedItems = ImmutableList.of(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));
 
 	
-	public static Predicate<EntityItem> NotCheckTags(EntityPlayer player){
+	public static Predicate<EntityItem> floatingItemsToPickUp(EntityPlayer player){
 		return ((x) -> {
 			if(blackListedItems.contains(Item.REGISTRY.getNameForObject(x.getItem().getItem())))
 				return false;
 			NBTTagCompound nbt = x.getEntityData();
 			
-				if(!CanPickUp(nbt, player))
+				if(!canPickUp(nbt, player))
 					return false;
-				if(CanTrack(nbt, player))
+				if(canTrack(nbt, player))
 					return true;
 
 			int range = Math.max(ModConfig.server.rangeT1, ModConfig.server.rangeT2);
@@ -54,14 +50,14 @@ public class MagnetHelper {
 		});
 	}
 	
-	private static boolean CanTrack(NBTTagCompound nbt, EntityPlayer player){
+	private static boolean canTrack(NBTTagCompound nbt, EntityPlayer player){
 		if(nbt.hasKey(NBTTags.TRACKED_BY) && nbt.getString(NBTTags.TRACKED_BY).equals(player.getName()))
 			return true;
 		else 
 			return false;
 	}
 	
-	private static boolean CanPickUp(NBTTagCompound nbt, EntityPlayer player){
+	private static boolean canPickUp(NBTTagCompound nbt, EntityPlayer player){
 		if (!nbt.hasKey(NBTTags.PICKUP_IN) ||  (nbt.hasKey(NBTTags.PICKUP_IN) && !nbt.getString(NBTTags.DROPPED_BY).equals(player.getName()))){
 			return true;
 		}else 
@@ -69,14 +65,14 @@ public class MagnetHelper {
 	}
 	
 	
-	public static Predicate<EntityPlayer> Check(){
+	public static Predicate<EntityPlayer> hasMagnetOnCheck(){
 		return ((x) -> {
 			IMagnetHandler mh = x.getCapability(MagnetHandler.CAP, null);
-			return hasMagnetInInventory(x) && mh!= null && mh.getHasMagnetOn();
+			return mh!= null && (hasMagnetInInventory(x) || mh.getHasBelt()) && mh.getHasMagnetOn();
 		});
 	}
 	
-	public static Predicate<EntityItem> CheckTags(){
+	public static Predicate<EntityItem> hasPickUpInTag(){
 		return ((x) -> {
 			return x.getEntityData().hasKey(NBTTags.PICKUP_IN);
 		});
@@ -89,6 +85,11 @@ public class MagnetHelper {
 
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2)))
 			result = getRange(2);
+		
+		IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+		if(mh != null && mh.getHasBelt())
+			result = getRange(mh.getTier());
+		
 		return result;
 	}
 	
@@ -99,6 +100,11 @@ public class MagnetHelper {
 		
 		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2)))
 			result = getSpeed(2);
+		
+		IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+		if(mh != null && mh.getHasBelt())
+			result = getSpeed(mh.getTier());
+		
 		return result;
 	}
 	
@@ -126,6 +132,16 @@ public class MagnetHelper {
 		}
 	}
 	
+	public static int getBeltTier(EntityPlayer player){
+		int result = 0;
+		InventoryPlayer ip = player.inventory;
+		if(ip.hasItemStack(new ItemStack(ModItems.beltT1)))
+			result = 1;
+		if(ip.hasItemStack(new ItemStack(ModItems.beltT2)))
+			result = 2;
+		return result;
+	}
+	
 	
 	public static boolean hasMagnetInInventory(EntityPlayer player){
 		boolean result = false;
@@ -143,10 +159,9 @@ public class MagnetHelper {
 
         for (EntityPlayer player : list)
         {
-            if (Check().apply(player) && CanPickUp(item.getEntityData(),player))
+            if (hasMagnetOnCheck().apply(player) && canPickUp(item.getEntityData(),player))
             {
             	int range = getRange(player);
-            	
                 double testDistance = item.getDistanceToEntity(player);
 
                 if (testDistance <= shortestDistance && testDistance <= range)

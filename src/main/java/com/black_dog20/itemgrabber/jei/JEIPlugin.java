@@ -11,6 +11,7 @@ import mezz.jei.api.ingredients.IModIngredientRegistration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
+import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.init.ModItems;
 
 @mezz.jei.api.JEIPlugin
@@ -30,9 +31,15 @@ public class JEIPlugin extends BlankModPlugin{
 
 	@Override
 	public void register(IModRegistry registry) {
+		List<ItemStack> magnetList = new ArrayList<ItemStack>();
+		magnetList.add(new ItemStack(ModItems.magnetT1));
+		magnetList.add(new ItemStack(ModItems.magnetT2));
+		for(ItemStack stack : magnetList){
+			registry.addIngredientInfo(stack, ItemStack.class, I18n.format("magnet.info.start"));
+		}
+		
 		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModItems.magnetT1));
-		list.add(new ItemStack(ModItems.magnetT2));
+
 		
 		for(ItemStack stack : list){
 			String info = getFormattedString(stack);

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.network.PacketHandler;
+import com.black_dog20.itemgrabber.network.message.MessageUpdateBeltState;
 import com.black_dog20.itemgrabber.network.message.MessageUpdateMagnetState;
 
 
@@ -17,6 +18,8 @@ public class KeyInputEventHandler {
 	public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
 		if(Keybindings.ON.isPressed()){
 			PacketHandler.network.sendToServer(new MessageUpdateMagnetState());
+		} else if(Keybindings.TAKE_OFF.isPressed()){
+			PacketHandler.network.sendToServer(new MessageUpdateBeltState());
 		}
 	}
 }

@@ -37,7 +37,7 @@ public class PlayerEventHandler {
 				speed = MagnetHelper.getSpeed(player);
 				if(range != 0){
 					List<EntityItem> floatingItems = player.getEntityWorld().getEntitiesWithinAABB(EntityItem.class, 
-									new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range), MagnetHelper.NotCheckTags(player));
+									new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range), MagnetHelper.floatingItemsToPickUp(player));
 					int pulledItems = 0;
 					if (!floatingItems.isEmpty()){
 						for (EntityItem entityItem : floatingItems) {
@@ -79,7 +79,7 @@ public class PlayerEventHandler {
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent event){
 		if(event.world.isRemote) return;
-		for(EntityItem e : event.world.getEntities(EntityItem.class, MagnetHelper.CheckTags())){
+		for(EntityItem e : event.world.getEntities(EntityItem.class, MagnetHelper.hasPickUpInTag())){
 			NBTTagCompound nbt = e.getEntityData();
 			if(nbt.getInteger(NBTTags.PICKUP_IN) <= 0){
 				nbt.removeTag(NBTTags.PICKUP_IN);
