@@ -1,5 +1,13 @@
 package com.black_dog20.itemgrabber.handler;
 
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.network.PacketHandler;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
+import com.black_dog20.itemgrabber.network.message.MessageUpdateSneakState;
+import com.black_dog20.itemgrabber.reference.Reference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -8,14 +16,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.config.ModConfig;
-import com.black_dog20.itemgrabber.network.PacketHandler;
-import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
-import com.black_dog20.itemgrabber.network.message.MessageUpdateSneakState;
-import com.black_dog20.itemgrabber.reference.Reference;
 
 public class CapabilityHandler {
 

@@ -1,10 +1,10 @@
 package com.black_dog20.itemgrabber.creativetab;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-
 import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.reference.Reference;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 
 public class CreativeTabGTIG{
 

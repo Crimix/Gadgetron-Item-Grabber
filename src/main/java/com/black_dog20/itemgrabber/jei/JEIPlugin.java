@@ -3,6 +3,8 @@ package com.black_dog20.itemgrabber.jei;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.black_dog20.itemgrabber.init.ModItems;
+
 import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IJeiRuntime;
 import mezz.jei.api.IModRegistry;
@@ -10,9 +12,6 @@ import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-
-import com.black_dog20.itemgrabber.client.settings.Keybindings;
-import com.black_dog20.itemgrabber.init.ModItems;
 
 @mezz.jei.api.JEIPlugin
 public class JEIPlugin extends BlankModPlugin{

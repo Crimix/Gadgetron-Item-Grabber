@@ -2,15 +2,6 @@ package com.black_dog20.itemgrabber.utility;
 
 import java.util.List;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
-
 import com.black_dog20.itemgrabber.Grabber;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
@@ -19,6 +10,15 @@ import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
+
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 
 public class MagnetHelper {
 	

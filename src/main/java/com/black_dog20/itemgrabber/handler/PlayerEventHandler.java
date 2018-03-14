@@ -2,6 +2,13 @@ package com.black_dog20.itemgrabber.handler;
 
 import java.util.List;
 
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.network.PacketHandler;
+import com.black_dog20.itemgrabber.network.message.MessageConfigSync;
+import com.black_dog20.itemgrabber.reference.NBTTags;
+import com.black_dog20.itemgrabber.utility.MagnetHelper;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,13 +21,6 @@ import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
-
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.network.PacketHandler;
-import com.black_dog20.itemgrabber.network.message.MessageConfigSync;
-import com.black_dog20.itemgrabber.reference.NBTTags;
-import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
 public class PlayerEventHandler {
 	

@@ -1,14 +1,14 @@
 package com.black_dog20.itemgrabber.client.render;
 
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.client.model.Belt;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.client.model.Belt;
 
 public class BeltRender implements LayerRenderer<EntityPlayer>{
 

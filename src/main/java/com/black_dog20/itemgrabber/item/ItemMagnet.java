@@ -2,6 +2,12 @@ package com.black_dog20.itemgrabber.item;
 
 import java.util.List;
 
+import com.black_dog20.itemgrabber.capability.IMagnetHandler;
+import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.client.settings.Keybindings;
+import com.black_dog20.itemgrabber.config.ModConfig;
+import com.black_dog20.itemgrabber.utility.MagnetHelper;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.IItemPropertyGetter;
@@ -11,12 +17,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.client.settings.Keybindings;
-import com.black_dog20.itemgrabber.config.ModConfig;
-import com.black_dog20.itemgrabber.utility.MagnetHelper;
-
 public class ItemMagnet extends ItemBase {
 
 	private int tier;
@@ -24,6 +24,7 @@ public class ItemMagnet extends ItemBase {
 	public ItemMagnet(String name, int tier){
 		super(name);
 		this.tier = tier;
+		this.setMaxStackSize(1);
 		
 		this.addPropertyOverride(new ResourceLocation("state"), new IItemPropertyGetter() {
 			

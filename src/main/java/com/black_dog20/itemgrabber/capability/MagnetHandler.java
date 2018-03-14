@@ -1,5 +1,9 @@
 package com.black_dog20.itemgrabber.capability;
 
+import com.black_dog20.itemgrabber.network.PacketHandler;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
+import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,10 +12,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-
-import com.black_dog20.itemgrabber.network.PacketHandler;
-import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
-import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
 
 public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NBTTagCompound> {
 

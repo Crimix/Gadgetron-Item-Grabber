@@ -5,20 +5,12 @@ import java.util.List;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.init.ModItems;
-import com.black_dog20.itemgrabber.network.PacketHandler;
-import com.black_dog20.itemgrabber.network.message.MessageUpdateMagnetState;
-import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
@@ -29,6 +21,7 @@ public class ItemBelt extends ItemBase{
 	public ItemBelt(String name, int tier){
 		super(name);
 		this.tier = tier;
+		this.setMaxStackSize(1);
 	}
 	
 	

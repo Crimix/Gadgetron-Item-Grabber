@@ -1,12 +1,13 @@
 package com.black_dog20.itemgrabber.init;
 
+import com.black_dog20.itemgrabber.reference.Reference;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-
-import com.black_dog20.itemgrabber.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class Recipes {
@@ -22,6 +23,12 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.plateT2, new Object[] { "aaa", "apa", "aaa", 'a', "ingotAdamantine", 'p', ModItems.plateT1 }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.caseT2, new Object[] { "tat", "pcp", "ttt", 't', "ingotCarbonox", 'a', "ingotAdamantine", 'p', ModItems.plateT2, 'c', ModItems.magnetT1 }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.magnetT2, new Object[] { "s", "c", 's', ModItems.screenT2, 'c', ModItems.caseT2 }));
+	
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.blackLeather, new Object[] { "l", "d", 'l', Items.LEATHER , 'd', new ItemStack(Items.DYE, 1, EnumDyeColor.BLACK.getDyeDamage()) }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.blackLeather, 8), new Object[] { "lll", "ldl", "lll", 'l', Items.LEATHER , 'd', new ItemStack(Items.DYE, 1, EnumDyeColor.BLACK.getDyeDamage()) }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.belt, new Object[] { "lll", "ttt", "lll", 't', "ingotTitanium" , 'l', ModItems.blackLeather }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.beltT1, new Object[] { "b", "m", 'b', ModItems.belt , 'm', ModItems.magnetT1 }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.beltT2, new Object[] { "b", "m", 'b', ModItems.belt , 'm', ModItems.magnetT2 }));
 	}
 
 }
