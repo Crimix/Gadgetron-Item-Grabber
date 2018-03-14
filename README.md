@@ -1,4 +1,4 @@
-[![](http://cf.way2muchnoise.eu/full_gadgetron-itemgrabber.svg)](https://minecraft.curseforge.com/projects/gadgetron-itemgrabber)
+[![](http://cf.way2muchnoise.eu/full_gadgetron-itemgrabber_downloads.svg)](https://minecraft.curseforge.com/projects/gadgetron-itemgrabber)
 # Gadgetron: ItemGrabber
 [Gadgetron: ItemGrabber](https://minecraft.curseforge.com/projects/gadgetron-itemgrabber) is a magnet mod that uses the ores from
 [Gadgetron](https://minecraft.curseforge.com/projects/gadgetron).
