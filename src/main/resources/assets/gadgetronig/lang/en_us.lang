@@ -12,7 +12,7 @@ item.gadgetronig:caset2.name=Casing V2
 item.gadgetronig:belt.name=Belt
 item.gadgetronig:beltt1.name=Belt grabber V1
 item.gadgetronig:beltt2.name=Belt grabber V2
-item.gadgetronig:blackleather.name=Black leather
+item.gadgetronig:blackleather.name=Titanium reinforced black leather
 
 //Info Items
 magnet.info.start=The item grabber can be activated using the default key §9M§r key, when activated the texture will change and if not disabled a green magnet icon will appear. 
