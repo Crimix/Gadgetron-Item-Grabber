@@ -39,10 +39,4 @@ public class ItemBase extends Item implements IItemModelRegister{
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack item, EntityPlayer player, List<String> list, boolean bool, String text) {
-		super.addInformation(item, player, list, bool);
-		list.add(text);
-	}
-
 }

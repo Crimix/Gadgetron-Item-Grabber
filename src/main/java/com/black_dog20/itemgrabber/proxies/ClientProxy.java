@@ -7,8 +7,6 @@ import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.config.Server;
 import com.black_dog20.itemgrabber.config.ServerConfig;
-import com.black_dog20.itemgrabber.init.ModBlocks;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,7 +53,6 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRendersPreInit() {
-		ModBlocks.initModels();
 		MinecraftForge.EVENT_BUS.register(new GuiMagnetIcon());
 	}
 	

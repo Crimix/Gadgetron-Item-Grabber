@@ -1,0 +1,20 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"lll",
+		"ttt",
+		"lll"
+	],
+	"key": {
+		"t": {
+			"type": "forge:ore_dict",
+			"ore": "ingotTitanium"
+		},
+		"l": {
+			"item": "gadgetronig:blackleather"
+		}
+	},
+	"result": {
+		"item": "gadgetronig:belt"
+	}
+}

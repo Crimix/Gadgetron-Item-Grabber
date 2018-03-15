@@ -9,7 +9,6 @@ import com.black_dog20.itemgrabber.handler.CapabilityHandler;
 import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.handler.GuiHandler;
 import com.black_dog20.itemgrabber.handler.PlayerEventHandler;
-import com.black_dog20.itemgrabber.init.Recipes;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.proxies.IProxy;
 import com.black_dog20.itemgrabber.reference.Reference;
@@ -51,9 +50,8 @@ public class Grabber {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		Proxy.registerKeyInputHandler();
-		Recipes.init();
 		Proxy.registerRendersInit();
-		CapabilityManager.INSTANCE.register(IMagnetHandler.class, new MagnetStorage(), MagnetHandler.class);
+		CapabilityManager.INSTANCE.register(IMagnetHandler.class, new MagnetStorage(), new MagnetHandler.Factory());
 		
 		logger.info("Initialization Complete!");
 }
@@ -62,9 +60,5 @@ public class Grabber {
 	public void postInit(FMLPostInitializationEvent event) {
 
 		logger.info("Post Initialization Complete!");
-	}
-
-	public void reloadRecipes() {
-		Recipes.init();
 	}
 }

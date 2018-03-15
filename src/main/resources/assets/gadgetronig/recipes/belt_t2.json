@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"item": "gadgetronig:magnett2"
+		},
+		{
+			"item": "gadgetronig:belt"
+		}
+	],
+	"result": {
+		"item": "gadgetronig:beltt2"
+	}
+}

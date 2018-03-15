@@ -2,10 +2,13 @@ package com.black_dog20.itemgrabber.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.init.ModItems;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -26,8 +29,8 @@ public class ItemBelt extends ItemBase{
 	
 	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		super.addInformation(stack, playerIn, tooltip, advanced);
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		super.addInformation(stack, worldIn, tooltip, flagIn);
 		TextComponentTranslation rightclick = new TextComponentTranslation("tooltip.gadgetronig:rightclick");
 		TextComponentTranslation shiftclick = new TextComponentTranslation("tooltip.gadgetronig:shiftclick");
 		

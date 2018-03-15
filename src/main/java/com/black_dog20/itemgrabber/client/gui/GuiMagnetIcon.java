@@ -9,9 +9,9 @@ import com.black_dog20.itemgrabber.utility.MagnetHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -105,7 +105,7 @@ public class GuiMagnetIcon extends Gui{
 	protected void drawNonStandardTexturedRect(int x, int y, int u, int v, int width, int height, int textureWidth, int textureHeight) {
 		double f = 1F / (double) textureWidth;
 		double f1 = 1F / (double) textureHeight;
-		VertexBuffer wr = Tessellator.getInstance().getBuffer();
+		BufferBuilder wr = Tessellator.getInstance().getBuffer();
 		wr.begin(7, DefaultVertexFormats.POSITION_TEX);
 		wr.pos(x,y + height, 0).tex( u * f, (v + height) * f1).endVertex();
 		wr.pos(x + width, y + height, 0).tex((u + width) * f, (v + height) * f1).endVertex();

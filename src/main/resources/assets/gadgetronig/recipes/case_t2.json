@@ -1,0 +1,27 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"tat",
+		"pcp",
+		"ttt"
+	],
+	"key": {
+		"t": {
+			"type": "forge:ore_dict",
+			"ore": "ingotCarbonox"
+		},
+		"a": {
+			"type": "forge:ore_dict",
+			"ore": "ingotAdamantine"
+		},
+		"c": {
+			"item": "gadgetronig:magnett1"
+		},
+		"p": {
+      		"item": "gadgetronig:platet2"
+		}
+	},
+	"result": {
+		"item": "gadgetronig:caset2"
+	}
+}

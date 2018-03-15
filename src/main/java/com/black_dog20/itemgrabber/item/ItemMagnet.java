@@ -2,12 +2,17 @@ package com.black_dog20.itemgrabber.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
+import com.black_dog20.itemgrabber.Grabber;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.IItemPropertyGetter;
@@ -46,8 +51,8 @@ public class ItemMagnet extends ItemBase {
 	}
 	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		super.addInformation(stack, playerIn, tooltip, advanced);
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		super.addInformation(stack, worldIn, tooltip, flagIn);
 		TextComponentTranslation press = new TextComponentTranslation("tooltip.gadgetronig:press");
 		
 		TextComponentTranslation activate = new TextComponentTranslation("tooltip.gadgetronig:activate");
@@ -69,7 +74,9 @@ public class ItemMagnet extends ItemBase {
 		tooltip.add(press.getFormattedText() + "§9" + Keybindings.ON.getDisplayName() + "§r §7" + activate.getFormattedText()+ "§r");
 		tooltip.add("");
 		
-		IMagnetHandler mh = playerIn.getCapability(MagnetHandler.CAP, null);
+		if(Minecraft.getMinecraft().player != null) {
+		
+		IMagnetHandler mh = Minecraft.getMinecraft().player.getCapability(MagnetHandler.CAP, null);
 		if(mh != null){
 			TextComponentTranslation activeState = mh.getHasMagnetOn() ? on : off;
 			TextComponentTranslation sneakState = mh.getSneakDeactivate() ? on : off;
@@ -81,7 +88,7 @@ public class ItemMagnet extends ItemBase {
 			tooltip.add(speed.getFormattedText() + ": "+ (MagnetHelper.getSpeed(tier)*20) + " " + blocks.getFormattedText() + "/" + sec.getFormattedText());
 		else
 			tooltip.add(speed.getFormattedText() + ": " + MagnetHelper.getSpeed(tier) + " " + blocks.getFormattedText() + "/" + tick.getFormattedText());
-		
+		}
 
 	}	
 }

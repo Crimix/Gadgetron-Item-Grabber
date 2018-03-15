@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "aaa",
+    "rrr",
+    "ttt"
+  ],
+  "key": {
+    "a": {
+      "type": "forge:ore_dict",
+      "ore": "ingotAdamantine"
+    },
+    "r": {
+      "type": "forge:ore_dict",
+      "ore": "crystalRaritanium"
+    },
+    "t": {
+      "type": "forge:ore_dict",
+      "ore": "ingotTrillium"
+    }
+  },
+  "result": {
+    "item": "gadgetronig:coret1"
+  }
+}

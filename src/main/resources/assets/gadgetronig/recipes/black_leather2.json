@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"ltl",
+		"ldl",
+		"ltl"
+	],
+	"key": {
+		"l": {
+			"item": "minecraft:leather"
+		},
+		"t": {
+			"type": "forge:ore_dict",
+			"ore": "ingotTitanium"
+		},
+		"d": {
+			"type": "forge:ore_dict",
+			"ore": "dyeBlack"
+		}
+	},
+	"result": {
+		"item": "gadgetronig:blackleather",
+		"count": 6
+	}
+}

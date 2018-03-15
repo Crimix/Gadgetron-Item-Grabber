@@ -162,7 +162,7 @@ public class MagnetHelper {
             if (hasMagnetOnCheck().apply(player) && canPickUp(item.getEntityData(),player))
             {
             	int range = getRange(player);
-                double testDistance = item.getDistanceToEntity(player);
+                double testDistance = item.getDistance(player);
 
                 if (testDistance <= shortestDistance && testDistance <= range)
                 {

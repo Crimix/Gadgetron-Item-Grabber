@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ggg",
+    "grg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:stained_glass_pane",
+      "data": 11
+    },
+    "r": {
+      "item": "gadgetronig:coret1"
+    }
+  },
+  "result": {
+    "item": "gadgetronig:screent1"
+  }
+}

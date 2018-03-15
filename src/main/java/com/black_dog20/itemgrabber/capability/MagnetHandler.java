@@ -1,5 +1,7 @@
 package com.black_dog20.itemgrabber.capability;
 
+import java.util.concurrent.Callable;
+
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
@@ -111,5 +113,15 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	public void deserializeNBT(NBTTagCompound nbt) {
 		CAP.getStorage().readNBT(CAP, this, null, nbt);
 	}
+	
+	public static final class Factory implements Callable<MagnetHandler>
+	{
+		  @Override
+		  public MagnetHandler call() throws Exception
+		  {
+		    return new MagnetHandler();
+		  }
+	}
+
 
 }
