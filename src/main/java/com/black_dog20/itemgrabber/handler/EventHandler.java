@@ -2,10 +2,13 @@ package com.black_dog20.itemgrabber.handler;
 
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 public class EventHandler {
 
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void Tool(ItemTooltipEvent event) {
 

@@ -5,13 +5,17 @@ import java.util.List;
 
 import com.black_dog20.itemgrabber.init.ModItems;
 
+import mezz.jei.api.IJeiRuntime;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
+import mezz.jei.api.ISubtypeRegistry;
+import mezz.jei.api.ingredients.IModIngredientRegistration;
+import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
 @mezz.jei.api.JEIPlugin
-public class JEIPlugin implements IModPlugin{
+public class JEIPlugin implements IModPlugin {
 
 	@Override
 	public void register(IModRegistry registry) {
@@ -43,4 +47,26 @@ public class JEIPlugin implements IModPlugin{
 			return res;
 		}
 	}
+	
+	@Override
+	public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void registerIngredients(IModIngredientRegistration registry) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void registerCategories(IRecipeCategoryRegistration registry) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
