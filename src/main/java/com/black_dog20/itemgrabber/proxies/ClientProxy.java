@@ -21,7 +21,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerKeyBindings() {
 		ClientRegistry.registerKeyBinding(Keybindings.ON);
-		//ClientRegistry.registerKeyBinding(Keybindings.TAKE_OFF);
+		ClientRegistry.registerKeyBinding(Keybindings.TAKE_OFF);
 	}
 
 	@Override
