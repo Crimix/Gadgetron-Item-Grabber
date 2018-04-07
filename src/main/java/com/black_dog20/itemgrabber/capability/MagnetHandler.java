@@ -24,6 +24,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	private boolean belt = false;
 	private int tier = 0;
 	private boolean dirty = false;
+	private boolean tempOff = false;
 	
 	
 	@Override
@@ -69,6 +70,17 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	public int getTier() {
 		return tier;
 	}
+	
+	@Override
+	public void setTempOff(boolean tempOff) {
+		this.tempOff = tempOff;
+		dirty = true;
+	}
+
+	@Override
+	public boolean getTempOff() {
+		return tempOff;
+	}
 
 	@Override
 	public void copyTo(IMagnetHandler other) {
@@ -76,6 +88,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 		other.setHasMagnetOn(magnetOn);
 		other.setTier(tier);
 		other.setSneakDeactivate(sneakDeactivate);
+		other.setTempOff(tempOff);
 	}
 	
 	@Override

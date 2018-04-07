@@ -10,4 +10,6 @@ public interface IMagnetHandler extends IBaseCapability<IMagnetHandler> {
 	int getTier();
 	void setSneakDeactivate(boolean sneakDeactivate);
 	boolean getSneakDeactivate();
+	void setTempOff(boolean tempOff);
+	boolean getTempOff();
 }

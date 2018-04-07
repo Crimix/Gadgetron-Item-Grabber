@@ -86,7 +86,7 @@ public class GuiMagnetIcon extends Gui{
 		GlStateManager.enableAlpha();
 		IMagnetHandler mh = MagnetHandler.instanceFor(mc.player);
 		if(mh != null){
-			if(mh.getHasMagnetOn() && mh.getSneakDeactivate() && mc.player.isSneaking() && (MagnetHelper.hasMagnetInInventory(mc.player) || mh.getHasBelt())){
+			if(((mh.getHasMagnetOn() && mh.getSneakDeactivate() && mc.player.isSneaking()) || mh.getTempOff() ) && (MagnetHelper.hasMagnetInInventory(mc.player) || mh.getHasBelt())){
 				mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/magnetsneak.png"));
 			} else if(mh.getHasMagnetOn() && (MagnetHelper.hasMagnetInInventory(mc.player) || mh.getHasBelt())){
 				mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/magneton.png"));

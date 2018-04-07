@@ -8,7 +8,6 @@ import com.black_dog20.itemgrabber.capability.MagnetStorage;
 import com.black_dog20.itemgrabber.handler.CapabilityHandler;
 import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.handler.GuiHandler;
-import com.black_dog20.itemgrabber.handler.PlayerEventHandler;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.proxies.IProxy;
 import com.black_dog20.itemgrabber.reference.Reference;
@@ -36,7 +35,6 @@ public class Grabber {
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
-		MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		Proxy.registerKeyBindings();
 		PacketHandler.init();

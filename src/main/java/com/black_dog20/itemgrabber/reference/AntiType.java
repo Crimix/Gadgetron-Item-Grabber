@@ -1,5 +1,5 @@
 package com.black_dog20.itemgrabber.reference;
 
-public enum Key {
-	ON, TAKE_OFF;
+public enum AntiType {
+	UP, DOWN, ALL;
 }
