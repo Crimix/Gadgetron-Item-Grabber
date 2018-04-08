@@ -1,5 +1,7 @@
 package com.black_dog20.itemgrabber.capability;
 
+import java.util.concurrent.Callable;
+
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapability;
 import com.black_dog20.itemgrabber.network.message.MessageSyncMagnetCapabilityTracking;
@@ -22,6 +24,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	private boolean belt = false;
 	private int tier = 0;
 	private boolean dirty = false;
+	private boolean tempOff = false;
 	
 	
 	@Override
@@ -67,6 +70,17 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	public int getTier() {
 		return tier;
 	}
+	
+	@Override
+	public void setTempOff(boolean tempOff) {
+		this.tempOff = tempOff;
+		dirty = true;
+	}
+
+	@Override
+	public boolean getTempOff() {
+		return tempOff;
+	}
 
 	@Override
 	public void copyTo(IMagnetHandler other) {
@@ -74,6 +88,7 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 		other.setHasMagnetOn(magnetOn);
 		other.setTier(tier);
 		other.setSneakDeactivate(sneakDeactivate);
+		other.setTempOff(tempOff);
 	}
 	
 	@Override
@@ -111,5 +126,15 @@ public class MagnetHandler implements IMagnetHandler, ICapabilitySerializable<NB
 	public void deserializeNBT(NBTTagCompound nbt) {
 		CAP.getStorage().readNBT(CAP, this, null, nbt);
 	}
+	
+	public static final class Factory implements Callable<MagnetHandler>
+	{
+		  @Override
+		  public MagnetHandler call() throws Exception
+		  {
+		    return new MagnetHandler();
+		  }
+	}
+
 
 }

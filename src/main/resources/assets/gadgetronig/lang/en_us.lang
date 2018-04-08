@@ -17,6 +17,16 @@ item.gadgetronig:blackleather.name=Titanium reinforced black leather
 //Info Items
 magnet.info.start=The item grabber can be activated using the default key §9M§r key, when activated the texture will change and if not disabled a green magnet icon will appear. 
 
+//Blocks
+tile.gadgetronig:antimagnett1up.name=Anti grabber block (up) (5x5x2)
+tile.gadgetronig:antimagnett1down.name=Anti grabber block (down) (5x5x2)
+tile.gadgetronig:antimagnett1all.name=Anti grabber block (5x5x5)
+tile.gadgetronig:antimagnett2up.name=Anti grabber block (up) (7x7x3)
+tile.gadgetronig:antimagnett2down.name=Anti grabber block (down) (7x7x3)
+tile.gadgetronig:antimagnett2all.name=Anti grabber block (7x7x7)
+tile.gadgetronig:antimagnett3up.name=Anti grabber block (up) (9x9x4)
+tile.gadgetronig:antimagnett3down.name=Anti grabber block (down) (9x9x4)
+tile.gadgetronig:antimagnett3all.name=Anti grabber block (9x9x9)
 
 //Tooltips
 tooltip.gadgetronig:press=Press 
@@ -33,8 +43,7 @@ tooltip.gadgetronig:off=Off
 
 tooltip.gadgetronig:rightclick=Right click to put on belt
 tooltip.gadgetronig:shiftclick=Shift right click to remove grabber from belt
-
-tick
+tooltip.gadgetronig:unequip=To unequip belt press
 
 //Container
 

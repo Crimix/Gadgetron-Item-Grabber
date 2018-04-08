@@ -17,14 +17,16 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 	private boolean hasBelt;
 	private int tier;
 	private boolean sneak;
+	private boolean tempOff;
 	
 	public MessageSyncMagnetCapability() {}
 	
 	public MessageSyncMagnetCapability(IMagnetHandler mh) {
-		this.hasMagnetOn = mh.getHasMagnetOn();
-		this.hasBelt = mh.getHasBelt();
-		this.tier = mh.getTier();
+		hasMagnetOn = mh.getHasMagnetOn();
+		hasBelt = mh.getHasBelt();
+		tier = mh.getTier();
 		sneak = mh.getSneakDeactivate();
+		tempOff = mh.getTempOff();
 	}
 	
 	
@@ -38,6 +40,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 				mh.setHasBelt(message.hasBelt);
 				mh.setTier(message.tier);
 				mh.setSneakDeactivate(message.sneak);
+				mh.setTempOff(message.tempOff);
 			}
 		});
 		return null;
@@ -49,6 +52,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 		hasBelt = buf.readBoolean();
 		tier = buf.readInt();
 		sneak = buf.readBoolean();
+		tempOff = buf.readBoolean();
 	}
 
 	@Override
@@ -57,6 +61,7 @@ public class MessageSyncMagnetCapability implements IMessage, IMessageHandler<Me
 		buf.writeBoolean(hasBelt);
 		buf.writeInt(tier);
 		buf.writeBoolean(sneak);
+		buf.writeBoolean(tempOff);
 	}
 
 }

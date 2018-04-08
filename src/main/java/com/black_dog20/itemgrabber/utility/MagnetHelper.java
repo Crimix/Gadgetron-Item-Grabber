@@ -31,10 +31,14 @@ public class MagnetHelper {
 				return false;
 			NBTTagCompound nbt = x.getEntityData();
 			
-				if(!canPickUp(nbt, player))
-					return false;
-				if(canTrack(nbt, player))
-					return true;
+			if(nbt.getBoolean("PreventRemoteMovement"))
+				return false;
+			if(nbt.hasKey(NBTTags.BLOCKED))
+				return false;
+			if(!canPickUp(nbt, player))
+				return false;
+			if(canTrack(nbt, player))
+				return true;
 
 			int range = Math.max(ModConfig.server.rangeT1, ModConfig.server.rangeT2);
 			EntityPlayer nearest = findNearestEntityWithinAABB(x, 

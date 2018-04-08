@@ -14,6 +14,7 @@ public class MagnetStorage implements IStorage<IMagnetHandler>{
 		nbt.setBoolean("belt", instance.getHasBelt());
 		nbt.setInteger("tier", instance.getTier());
 		nbt.setBoolean("sneakDeactivate", instance.getSneakDeactivate());
+		nbt.setBoolean("tempOff", instance.getTempOff());
 		return nbt;
 	}
 
@@ -22,6 +23,7 @@ public class MagnetStorage implements IStorage<IMagnetHandler>{
 		instance.setHasBelt(((NBTTagCompound) nbt).getBoolean("belt"));
 		instance.setTier(((NBTTagCompound) nbt).getInteger("tier"));
 		instance.setSneakDeactivate(((NBTTagCompound) nbt).getBoolean("sneakDeactivate"));
+		instance.setTempOff(((NBTTagCompound) nbt).getBoolean("tempOff"));
 	}
 
 }

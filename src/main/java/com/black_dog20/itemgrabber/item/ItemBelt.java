@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.itemgrabber.client.settings.Keybindings;
 import com.black_dog20.itemgrabber.init.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,9 +29,10 @@ public class ItemBelt extends ItemBase{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
+		TextComponentTranslation unequip = new TextComponentTranslation("tooltip.gadgetronig:unequip");
 		TextComponentTranslation rightclick = new TextComponentTranslation("tooltip.gadgetronig:rightclick");
 		TextComponentTranslation shiftclick = new TextComponentTranslation("tooltip.gadgetronig:shiftclick");
-		
+		tooltip.add(unequip.getFormattedText() + " §9" + Keybindings.TAKE_OFF.getDisplayName() + "§r");
 		tooltip.add(rightclick.getFormattedText());
 		tooltip.add(shiftclick.getFormattedText());
 	}

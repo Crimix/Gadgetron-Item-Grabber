@@ -18,6 +18,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 	private int tier;
 	private int id;
 	private boolean sneak;
+	private boolean tempOff;
 	
 	public MessageSyncMagnetCapabilityTracking() {}
 	
@@ -27,6 +28,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 		tier = mh.getTier();
 		sneak = mh.getSneakDeactivate();
 		id = player.getEntityId();
+		tempOff = mh.getTempOff();
 	}
 	
 	
@@ -40,6 +42,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 				mh.setHasBelt(message.hasBelt);
 				mh.setTier(message.tier);
 				mh.setSneakDeactivate(message.sneak);
+				mh.setTempOff(message.tempOff);
 			}
 		});
 		return null;
@@ -52,6 +55,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 		tier = buf.readInt();
 		id = buf.readInt();
 		sneak = buf.readBoolean();
+		tempOff = buf.readBoolean();
 	}
 
 	@Override
@@ -61,6 +65,7 @@ public class MessageSyncMagnetCapabilityTracking implements IMessage, IMessageHa
 		buf.writeInt(tier);
 		buf.writeInt(id);
 		buf.writeBoolean(sneak);
+		buf.writeBoolean(tempOff);
 	}
 
 }
