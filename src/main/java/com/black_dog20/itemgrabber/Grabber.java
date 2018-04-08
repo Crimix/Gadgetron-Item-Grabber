@@ -8,7 +8,6 @@ import com.black_dog20.itemgrabber.capability.MagnetStorage;
 import com.black_dog20.itemgrabber.handler.CapabilityHandler;
 import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.handler.GuiHandler;
-import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.init.Recipes;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.proxies.IProxy;
