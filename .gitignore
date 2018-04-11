@@ -17,3 +17,5 @@ Thumbs.db
 /eclipse
 /bin
 /libs
+/changelog.txt
+/private.properties
