@@ -6,6 +6,7 @@ import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageConfigSync;
+import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
@@ -20,9 +21,11 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
+import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
 
 public class EventHandler {
 	
@@ -74,10 +77,15 @@ public class EventHandler {
 			EntityPlayer player = (EntityPlayer) event.getEntity();
 			if(player.world.isRemote) return;
 			NBTTagCompound nbt = player.getEntityData();
-			
+			IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+			if(Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(player)) {
+				nbt.setInteger(NBTTags.BLOCKED, Constants.PLAYER_BLOCKED_TIME);
+				if(mh != null && !mh.getTempOff()) {
+					mh.setTempOff(true);
+				}
+			}
 			if(nbt.getInteger(NBTTags.BLOCKED) <= 0){
 				nbt.removeTag(NBTTags.BLOCKED);
-				IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
 				if(mh != null) {
 					mh.setTempOff(false);
 				}
@@ -118,24 +126,24 @@ public class EventHandler {
 		}
 	}
 	
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onEntityAdded(EntityJoinWorldEvent event) {
 		if(event.getEntity().world.isRemote) return;
 		Entity entity = event.getEntity();
 		if (entity instanceof EntityItem) {
 			EntityItem entityItem = (EntityItem) entity;
 			if(entityItem.getThrower() != null && !entityItem.getThrower().equals("")) {
-				entityItem.getEntityData().setInteger(NBTTags.PICKUP_IN, 100);
+				entityItem.getEntityData().setInteger(NBTTags.PICKUP_IN, Constants.PICK_UP_DELAY);
 				entityItem.getEntityData().setString(NBTTags.DROPPED_BY, entityItem.getThrower());
 			}
 		}
-	}
+	}*/
 
 	
 	@SubscribeEvent
 	public void onTossItem(ItemTossEvent event){
 		if(event.getPlayer().world.isRemote ) return;
-		event.getEntityItem().getEntityData().setInteger(NBTTags.PICKUP_IN, 100);
+		event.getEntityItem().getEntityData().setInteger(NBTTags.PICKUP_IN, Constants.PICK_UP_DELAY);
 		event.getEntityItem().getEntityData().setString(NBTTags.DROPPED_BY, event.getPlayer().getName());
 	}
 	
