@@ -6,6 +6,7 @@ import java.util.List;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.reference.AntiType;
+import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 
 import net.minecraft.entity.item.EntityItem;
@@ -64,7 +65,7 @@ public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 			if(mh != null && !mh.getTempOff()) {
 				mh.setTempOff(true);
 			}
-			player.getEntityData().setInteger(NBTTags.BLOCKED, 40);
+			player.getEntityData().setInteger(NBTTags.BLOCKED, Constants.PLAYER_BLOCKED_TIME);
 		}
 
 	}

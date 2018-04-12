@@ -19,6 +19,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.fml.common.Loader;
+import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
 
 public class MagnetHelper {
 
@@ -31,7 +33,8 @@ public class MagnetHelper {
 				return false;
 			NBTTagCompound nbt = x.getEntityData();
 
-
+			if(Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x))
+				return false;
 			if(nbt.getBoolean("PreventRemoteMovement"))
 				return false;
 			if(nbt.hasKey(NBTTags.BLOCKED))
