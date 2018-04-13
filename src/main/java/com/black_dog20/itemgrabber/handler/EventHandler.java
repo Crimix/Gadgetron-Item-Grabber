@@ -10,22 +10,18 @@ import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.black_dog20.itemgrabber.utility.MagnetHelper;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
-import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
 
 public class EventHandler {
 	
@@ -78,19 +74,16 @@ public class EventHandler {
 			if(player.world.isRemote) return;
 			NBTTagCompound nbt = player.getEntityData();
 			IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
-			if(Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(player)) {
-				nbt.setInteger(NBTTags.BLOCKED, Constants.PLAYER_BLOCKED_TIME);
-				if(mh != null && !mh.getTempOff()) {
-					mh.setTempOff(true);
+			if(mh != null && (mh.getHasBelt() || MagnetHelper.hasMagnetInInventory(player))) {
+				MagnetHelper.checkIfMagnetShouldBeTempOff(player);
+				if(nbt.getInteger(NBTTags.BLOCKED) <= 0){
+					nbt.removeTag(NBTTags.BLOCKED);
+					if(mh != null) {
+						mh.setTempOff(false);
+					}	
+				}else{
+					nbt.setInteger(NBTTags.BLOCKED, (nbt.getInteger(NBTTags.BLOCKED))-1);
 				}
-			}
-			if(nbt.getInteger(NBTTags.BLOCKED) <= 0){
-				nbt.removeTag(NBTTags.BLOCKED);
-				if(mh != null) {
-					mh.setTempOff(false);
-				}
-			}else{
-				nbt.setInteger(NBTTags.BLOCKED, (nbt.getInteger(NBTTags.BLOCKED))-1);
 			}
 		}
 

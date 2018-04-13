@@ -1,5 +1,6 @@
 package com.black_dog20.itemgrabber.utility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.black_dog20.itemgrabber.Grabber;
@@ -7,9 +8,9 @@ import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.init.ModItems;
+import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableList;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,22 +20,35 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.fml.common.Loader;
-import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
 
 public class MagnetHelper {
+	private static final List<ResourceLocation> blackListedItems = new ArrayList<ResourceLocation>();
+	private static List<Predicate<EntityItem>> extrnalItemHandlers = new ArrayList<Predicate<EntityItem>>();
+	private static List<Predicate<EntityPlayer>> extranlAntigrabbers = new ArrayList<Predicate<EntityPlayer>>();
 	
-	private static final List<ResourceLocation> blackListedItems = ImmutableList.of(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));
-
+	public static void addEntityItemHandler(Predicate<EntityItem> handler) {
+		extrnalItemHandlers.add(handler);
+	}
 	
+	public static void addEntityPlayerHandler(Predicate<EntityPlayer> handler) {
+		extranlAntigrabbers.add(handler);
+	}
+	
+	public static void addBlackListedItem(ResourceLocation item) {
+		blackListedItems.add(item);
+	}
 	public static Predicate<EntityItem> floatingItemsToPickUp(EntityPlayer player){
 		return ((x) -> {
 			if(blackListedItems.contains(Item.REGISTRY.getNameForObject(x.getItem().getItem())))
 				return false;
 			NBTTagCompound nbt = x.getEntityData();
 
-			if(Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x))
-				return false;
+			for(Predicate<EntityItem> h : extrnalItemHandlers) {
+				if(h.apply(x)) {
+					return false;
+				}
+			}
+
 			if(nbt.getBoolean("PreventRemoteMovement"))
 				return false;
 			if(nbt.hasKey(NBTTags.BLOCKED))
@@ -72,7 +86,20 @@ public class MagnetHelper {
 			return false;
 	}
 	
-	
+
+	public static void checkIfMagnetShouldBeTempOff(EntityPlayer player) {
+		IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+		NBTTagCompound nbt = player.getEntityData();
+		for(Predicate<EntityPlayer> p : extranlAntigrabbers) {
+			if(p.apply(player)) {
+				nbt.setInteger(NBTTags.BLOCKED, Constants.PLAYER_BLOCKED_TIME);
+				if(mh != null && !mh.getTempOff()) {
+					mh.setTempOff(true);
+				}
+			}
+		}
+	}
+
 	public static Predicate<EntityPlayer> hasMagnetOnCheck(){
 		return ((x) -> {
 			IMagnetHandler mh = x.getCapability(MagnetHandler.CAP, null);

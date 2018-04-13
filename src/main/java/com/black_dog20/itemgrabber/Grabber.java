@@ -2,6 +2,7 @@ package com.black_dog20.itemgrabber;
 
 import org.apache.logging.log4j.Logger;
 
+import com.black_dog20.itemgrabber.api.API;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetStorage;
@@ -13,14 +14,17 @@ import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.proxies.IProxy;
 import com.black_dog20.itemgrabber.reference.Reference;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = Reference.DEPENDENCIES, acceptedMinecraftVersions = Reference.MC_VERSIONS)
 public class Grabber {
@@ -40,7 +44,8 @@ public class Grabber {
 		Proxy.registerKeyBindings();
 		PacketHandler.init();
 		Proxy.registerRendersPreInit();
-
+		SetupMagnet();
+		
 		logger.info("Pre Initialization Complete!");
 	}
 
@@ -62,7 +67,15 @@ public class Grabber {
 		logger.info("Post Initialization Complete!");
 	}
 
+
 	public void reloadRecipes() {
 		Recipes.init();
+	}
+	
+	
+	public void SetupMagnet(){
+		API.addBlacklistedItem(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));
+		API.addEntityItemHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
+		API.addEntityPlayerHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
 	}
 }
