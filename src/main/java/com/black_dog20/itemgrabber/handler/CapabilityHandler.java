@@ -28,13 +28,11 @@ public class CapabilityHandler {
 
 	@SubscribeEvent 
 	public void persistPlayerCapabilities(PlayerEvent.Clone e) {
-		if(e.isWasDeath()) {
 			IMagnetHandler newCap = e.getEntityPlayer().getCapability(MagnetHandler.CAP, null);
 			IMagnetHandler oldCap = e.getOriginal().getCapability(MagnetHandler.CAP, null);
 
 			if(oldCap != null)
 				oldCap.copyTo(newCap);
-		}
 	}
 	
 	@SubscribeEvent 
