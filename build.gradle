@@ -55,6 +55,10 @@ repositories {
         name = "CurseForge"
         url = "https://minecraft.curseforge.com/api/maven/"
   }
+      ivy {
+        name "Botania"
+        artifactPattern "http://botaniamod.net/files/deobf/[module]%20[revision]-deobf.[ext]"
+    }
 }
 
 dependencies {
