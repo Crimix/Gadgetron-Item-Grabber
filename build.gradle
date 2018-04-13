@@ -65,7 +65,7 @@ dependencies {
 	deobfProvided  "mezz.jei:jei_${mcversion}:${jei_version}:api"
 	runtime "mezz.jei:jei_${mcversion}:${jei_version}"
 	compile "gadgetron:Gadgetron:${mcversion}:${gadgetron_version}"
-	runtime "baubles:Baubles:1.12:${baubles_version}"
+	runtime "baubles:Baubles:1.11:${baubles_version}"
 	compile files("/libs/Botania ${botania_version}-deobf.jar")
 
     // you may put jars on which you depend on in ./libs
