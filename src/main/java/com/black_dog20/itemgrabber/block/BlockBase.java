@@ -9,9 +9,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockBase extends Block implements IItemModelRegister{
 
@@ -21,6 +26,7 @@ public class BlockBase extends Block implements IItemModelRegister{
 		setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
 		setUnlocalizedName(getRegistryName().toString());
 		setCreativeTab(CreativeTabGTIG.TAB);
+		setHardness(1.0F);
 	}
 
 	protected IBlockState pickDefaultState() {
