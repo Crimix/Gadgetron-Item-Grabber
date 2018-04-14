@@ -23,6 +23,7 @@ public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 	public TileEntityAntiMagnet(AntiType type, int range) {
 		this.type = type;
 		this.range = range;
+		range++;
 	}
 
 	@Override
@@ -33,26 +34,26 @@ public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 
 		if(type == AntiType.UP) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
-					new AxisAlignedBB(pos.getX() - range, pos.getY(), pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1), pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
 		
 			players = this.world.getEntitiesWithinAABB(EntityPlayer.class, 
-					new AxisAlignedBB(pos.getX() - range, pos.getY(), pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1), pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
 		
 		}
 		if(type == AntiType.DOWN) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
-					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
 			
 			players = this.world.getEntitiesWithinAABB(EntityPlayer.class, 
-					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
 
 		}
 		if(type == AntiType.ALL) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
-					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
 			
 			players = this.world.getEntitiesWithinAABB(EntityPlayer.class, 
-					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
 
 		}
 		
