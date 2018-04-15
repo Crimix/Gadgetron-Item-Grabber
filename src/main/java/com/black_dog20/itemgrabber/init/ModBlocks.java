@@ -1,7 +1,6 @@
 package com.black_dog20.itemgrabber.init;
 
 import com.black_dog20.itemgrabber.block.BlockAntiMagnet;
-import com.black_dog20.itemgrabber.block.BlockAntiMagnet;
 import com.black_dog20.itemgrabber.reference.AntiType;
 import com.black_dog20.itemgrabber.reference.Reference;
 import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnet;

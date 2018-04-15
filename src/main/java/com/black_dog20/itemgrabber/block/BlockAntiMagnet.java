@@ -1,24 +1,14 @@
 package com.black_dog20.itemgrabber.block;
 
-import com.black_dog20.itemgrabber.creativetab.CreativeTabGTIG;
 import com.black_dog20.itemgrabber.reference.AntiType;
-import com.black_dog20.itemgrabber.reference.Reference;
 import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnet;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -55,7 +45,7 @@ public class BlockAntiMagnet extends BlockBase {
 		return new TileEntityAntiMagnet(type, range);
 	}
 
-    private boolean checkForDrop (World world, BlockPos pos, IBlockState state) {
+    private boolean checkForIfItShouldDrop (World world, BlockPos pos, IBlockState state) {
 
         if (!this.canBlockStay(world, pos)) {
 
@@ -88,7 +78,7 @@ public class BlockAntiMagnet extends BlockBase {
     @Override
     public void neighborChanged (IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
-        this.checkForDrop(worldIn, pos, state);
+        this.checkForIfItShouldDrop(worldIn, pos, state);
     }
 
     @Override
