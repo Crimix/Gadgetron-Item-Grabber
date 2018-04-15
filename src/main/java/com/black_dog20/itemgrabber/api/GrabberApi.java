@@ -7,7 +7,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
-public class API {
+public class GrabberApi {
 
     /**
      * Adds a predicate that if true will prevent an EntityItem under specific conditions

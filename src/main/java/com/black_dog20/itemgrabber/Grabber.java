@@ -2,7 +2,7 @@ package com.black_dog20.itemgrabber;
 
 import org.apache.logging.log4j.Logger;
 
-import com.black_dog20.itemgrabber.api.API;
+import com.black_dog20.itemgrabber.api.GrabberApi;
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetStorage;
@@ -67,8 +67,8 @@ public class Grabber {
 	
 	
 	public void SetupMagnet(){
-		API.addBlacklistedItem(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));
-		API.addEntityItemHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
-		API.addEntityPlayerHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
+		GrabberApi.addBlacklistedItem(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));
+		GrabberApi.addEntityItemHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
+		GrabberApi.addEntityPlayerHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
 	}
 }
