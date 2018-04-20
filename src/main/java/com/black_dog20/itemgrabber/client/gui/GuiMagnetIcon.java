@@ -1,5 +1,7 @@
 package com.black_dog20.itemgrabber.client.gui;
 
+import org.lwjgl.input.Keyboard;
+
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.config.ModConfig;
@@ -9,11 +11,16 @@ import com.black_dog20.itemgrabber.utility.MagnetHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.gui.GuiOverlayDebug;
+import net.minecraft.client.gui.GuiPlayerTabOverlay;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.GuiScreenEvent.KeyboardInputEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -29,7 +36,15 @@ public class GuiMagnetIcon extends Gui{
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onRender(RenderGameOverlayEvent.Post event) {
-		if (event.isCanceled() || event.getType() != ElementType.ALL || ModConfig.client.iconHUDPos.hide || mc.currentScreen instanceof GuiChat) return;
+		
+		if(mc.gameSettings.keyBindPlayerList.isKeyDown())
+			return;
+		if(mc.gameSettings.showDebugInfo)
+			return;
+		
+		if (event.isCanceled() || event.getType() != ElementType.ALL || ModConfig.client.iconHUDPos.hide || mc.currentScreen instanceof GuiChat) 
+			return;
+		
 		int width = event.getResolution().getScaledWidth();
         int height = event.getResolution().getScaledHeight();
         int xPos = 0;

@@ -1,4 +1,5 @@
 {
+<<<<<<< 1.11
     "forge_marker": 1,
     "defaults": {
         "textures": {
@@ -15,4 +16,14 @@
             "model": "cube_all"
         }
     }
+=======
+	"variants": {
+		"normal": {
+			"model": "gadgetronig:antimagnetinvisible"
+		},
+		"inventory": {
+			"model": "gadgetronig:antimagnetv3"
+		}
+	}
+>>>>>>> f746c8c - Fixed textures  - Fixed such that the magnet icon does not get displayed when using the debug menu or when pressing tab.
 }

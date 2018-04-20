@@ -97,7 +97,6 @@ public class BlockAntiMagnet extends BlockBase{
     @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer () {
-
-        return BlockRenderLayer.CUTOUT;
+        return BlockRenderLayer.TRANSLUCENT;
     }
 }
