@@ -2,8 +2,6 @@ package com.black_dog20.itemgrabber.block;
 
 import java.util.List;
 
-import com.black_dog20.itemgrabber.reference.AntiType;
-import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnet;
 import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnetChunk;
 
 import net.minecraft.block.Block;
