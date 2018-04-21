@@ -17,13 +17,35 @@ import net.minecraft.util.math.AxisAlignedBB;
 
 public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 
+    private int[] ranges = {2,3,4};
 	private AntiType type;
-	private int range;
+	private int rangeMarker = 0;
 
-	public TileEntityAntiMagnet(AntiType type, int range) {
+	public TileEntityAntiMagnet(AntiType type) {
 		this.type = type;
-		this.range = range;
-		range++;
+	}
+	
+	public void incrementMarker() {
+		rangeMarker++;
+		if(rangeMarker == (ranges.length)) {
+			rangeMarker = 0;
+		}
+	}
+	
+	public String getRangeString() {
+		int xz = (((ranges[rangeMarker])*2)+1);
+		int y = (((ranges[rangeMarker])*2)+1);
+		switch (type) {
+		case ALL:
+			y = (((ranges[rangeMarker])*2)+1);
+			break;
+			
+		case UP:
+		case DOWN:
+			y = ((ranges[rangeMarker])+1);
+			break;
+		}
+		return xz+"x"+y+"x"+xz;
 	}
 
 	@Override
@@ -31,7 +53,8 @@ public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 		if(this.world.isRemote) return;
 		List<EntityItem> floatingItems = new ArrayList<EntityItem>();
 		List<EntityPlayer> players = new ArrayList<EntityPlayer>();
-
+		int range = ranges[rangeMarker];
+		range++;
 		if(type == AntiType.UP) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
 					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1), pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));

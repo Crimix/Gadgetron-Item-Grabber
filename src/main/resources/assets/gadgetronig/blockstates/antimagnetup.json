@@ -4,7 +4,7 @@
 			"model": "gadgetronig:antimagnetinvisible"
 		},
 		"inventory": {
-			"model": "gadgetronig:antimagnetv3"
+			"model": "gadgetronig:antimagnetup"
 		}
 	}
 }

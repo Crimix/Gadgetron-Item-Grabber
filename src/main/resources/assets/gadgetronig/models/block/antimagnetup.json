@@ -1,0 +1,7 @@
+{
+	"parent": "gadgetronig:block/antimagnetbase",
+	"textures": {
+		"particle": "gadgetronig:blocks/antimagnetup",
+		"tex": "gadgetronig:blocks/antimagnetup"
+	}
+}
