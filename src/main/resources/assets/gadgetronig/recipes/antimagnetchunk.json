@@ -1,0 +1,20 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"tat",
+		"ata",
+		"tat"
+	],
+	"key": {
+		"t": {
+			"type": "forge:ore_dict",
+			"ore": "ingotTrillium"
+		},
+		"a": {
+			"item": "gadgetronig:antimagnetall"
+		}
+	},
+	"result": {
+		"item": "gadgetronig:antimagnetchunk"
+	}
+}

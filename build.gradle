@@ -14,7 +14,11 @@ buildscript {
     	}
     }
     dependencies {
+<<<<<<< 1.11
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+=======
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+>>>>>>> 3c97c20 - Added recipes for anti grabbers  - Reduced the number of anti grabbers by having a way to change the range of the anti grabber.  - Added chat and tooltip texts for the anti grabbers.  - Changed the textures of the anti grabbers.  - Updated CurseGradle.
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.10'
     }
 }

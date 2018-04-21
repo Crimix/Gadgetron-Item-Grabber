@@ -1,24 +1,4 @@
 {
-<<<<<<< 1.11
-    "forge_marker": 1,
-    "defaults": {
-        "textures": {
-            "top": "gadgetronig:blocks/t1active",
-            "side": "gadgetronig:blocks/t1active",
-            "bottom": "gadgetronig:blocks/inactive"
-        },
-        "model": "cube_bottom_top",
-        "uvlock": true
-    },
-    "variants": {
-        "normal": {
-            "model": "cube_bottom_top"
-        },
-        "inventory": {
-            "model": "cube_bottom_top"
-        }
-    }
-=======
 	"variants": {
 		"normal": {
 			"model": "gadgetronig:antimagnetinvisible"
@@ -27,5 +7,4 @@
 			"model": "gadgetronig:antimagnetv1"
 		}
 	}
->>>>>>> f746c8c - Fixed textures  - Fixed such that the magnet icon does not get displayed when using the debug menu or when pressing tab.
 }

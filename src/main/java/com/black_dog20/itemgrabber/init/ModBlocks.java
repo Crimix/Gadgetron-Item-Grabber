@@ -18,35 +18,23 @@ import net.minecraftforge.fml.common.registry.IForgeRegistry;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModBlocks {
 	
-	public static BlockAntiMagnet AntiMagnetT1Up = new BlockAntiMagnet("antiMagnetT1Up", AntiType.UP, 2);
-	public static BlockAntiMagnet AntiMagnetT1Down = new BlockAntiMagnet("antiMagnetT1Down", AntiType.DOWN, 2);
-	public static BlockAntiMagnet AntiMagnetT1All = new BlockAntiMagnet("antiMagnetT1All", AntiType.ALL, 2);
+	public static BlockAntiMagnet AntiMagnetUp = new BlockAntiMagnet("antiMagnetUp", AntiType.UP);
+	public static BlockAntiMagnet AntiMagnetDown = new BlockAntiMagnet("antiMagnetDown", AntiType.DOWN);
+	public static BlockAntiMagnet AntiMagnetAll = new BlockAntiMagnet("antiMagnetAll", AntiType.ALL);
 	
-	public static BlockAntiMagnet AntiMagnetT2Up = new BlockAntiMagnet("antiMagnetT2Up", AntiType.UP, 3);
-	public static BlockAntiMagnet AntiMagnetT2Down = new BlockAntiMagnet("antiMagnetT2Down", AntiType.DOWN, 3);
-	public static BlockAntiMagnet AntiMagnetT2All = new BlockAntiMagnet("antiMagnetT2All", AntiType.ALL, 3);
-	
-	public static BlockAntiMagnet AntiMagnetT3Up = new BlockAntiMagnet("antiMagnetT3Up", AntiType.UP, 4);
-	public static BlockAntiMagnet AntiMagnetT3Down = new BlockAntiMagnet("antiMagnetT3Down", AntiType.DOWN, 4);
-	public static BlockAntiMagnet AntiMagnetT3All = new BlockAntiMagnet("antiMagnetT3All", AntiType.ALL, 4);
 	
 	public static BlockAntiMagnetChunk AntiMagnetChunk = new BlockAntiMagnetChunk("antiMagnetChunk");
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> evt) {
 		IForgeRegistry<Block> r = evt.getRegistry();
-		r.register(AntiMagnetT1Up);
-		r.register(AntiMagnetT1Down);
-		r.register(AntiMagnetT1All);
-		r.register(AntiMagnetT2Up);
-		r.register(AntiMagnetT2Down);
-		r.register(AntiMagnetT2All);
-		r.register(AntiMagnetT3Up);
-		r.register(AntiMagnetT3Down);
-		r.register(AntiMagnetT3All);
+		r.register(AntiMagnetUp);
+		r.register(AntiMagnetDown);
+		r.register(AntiMagnetAll);
 		r.register(AntiMagnetChunk);
 		
 		GameRegistry.registerTileEntity(TileEntityAntiMagnet.class, Reference.MOD_ID+":"+"antimagnet");
 		GameRegistry.registerTileEntity(TileEntityAntiMagnetChunk.class, Reference.MOD_ID+":"+"antimagnetchunk");
 	}
+
 }

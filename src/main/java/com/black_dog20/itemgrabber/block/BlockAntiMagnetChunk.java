@@ -1,5 +1,7 @@
 package com.black_dog20.itemgrabber.block;
 
+import java.util.List;
+
 import com.black_dog20.itemgrabber.reference.AntiType;
 import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnet;
 import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnetChunk;
@@ -7,11 +9,14 @@ import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnetChunk;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,6 +43,15 @@ public class BlockAntiMagnetChunk extends BlockBase {
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
 		return new TileEntityAntiMagnetChunk();
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+		super.addInformation(stack, player, tooltip, advanced);
+		TextComponentTranslation range = new TextComponentTranslation("tooltip.gadgetronig:antiRange");
+		TextComponentTranslation chunk = new TextComponentTranslation("tooltip.gadgetronig:antiRangeChunk");
+		tooltip.add(range.getFormattedText());
+		tooltip.add(chunk.getFormattedText());
 	}
 
     private boolean checkForIfItShouldDrop (World world, BlockPos pos, IBlockState state) {
