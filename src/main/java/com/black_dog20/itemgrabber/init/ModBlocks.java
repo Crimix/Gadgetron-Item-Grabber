@@ -1,9 +1,11 @@
 package com.black_dog20.itemgrabber.init;
 
 import com.black_dog20.itemgrabber.block.BlockAntiMagnet;
+import com.black_dog20.itemgrabber.block.BlockAntiMagnetChunk;
 import com.black_dog20.itemgrabber.reference.AntiType;
 import com.black_dog20.itemgrabber.reference.Reference;
 import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnet;
+import com.black_dog20.itemgrabber.tileentity.TileEntityAntiMagnetChunk;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -29,6 +31,8 @@ public class ModBlocks {
 	public static BlockAntiMagnet AntiMagnetT3Down = new BlockAntiMagnet("antiMagnetT3Down", AntiType.DOWN, 4);
 	public static BlockAntiMagnet AntiMagnetT3All = new BlockAntiMagnet("antiMagnetT3All", AntiType.ALL, 4);
 	
+	public static BlockAntiMagnetChunk AntiMagnetChunk = new BlockAntiMagnetChunk("antiMagnetChunk");
+	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> evt) {
 		IForgeRegistry<Block> r = evt.getRegistry();
@@ -41,8 +45,10 @@ public class ModBlocks {
 		r.register(AntiMagnetT3Up);
 		r.register(AntiMagnetT3Down);
 		r.register(AntiMagnetT3All);
+		r.register(AntiMagnetChunk);
 		
 		GameRegistry.registerTileEntity(TileEntityAntiMagnet.class, Reference.MOD_ID+":"+"antimagnet");
+		GameRegistry.registerTileEntity(TileEntityAntiMagnetChunk.class, Reference.MOD_ID+":"+"antimagnetchunk");
 	}
 	
 	@SubscribeEvent
@@ -57,6 +63,6 @@ public class ModBlocks {
 		r.register(new ItemBlock(AntiMagnetT3Up).setRegistryName(AntiMagnetT3Up.getRegistryName()));
 		r.register(new ItemBlock(AntiMagnetT3Down).setRegistryName(AntiMagnetT3Down.getRegistryName()));
 		r.register(new ItemBlock(AntiMagnetT3All).setRegistryName(AntiMagnetT3All.getRegistryName()));
-	
+		r.register(new ItemBlock(AntiMagnetChunk).setRegistryName(AntiMagnetChunk.getRegistryName()));
 	}
 }
