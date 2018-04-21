@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": {
+			"model": "gadgetronig:antimagnetinvisible"
+		},
+		"inventory": {
+			"model": "gadgetronig:antimagnetchunk"
+		}
+	}
+}
