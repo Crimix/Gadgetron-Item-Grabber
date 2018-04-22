@@ -7,7 +7,7 @@ public class Server {
 	@Config.Name("Magnet T1 Speed")
 	@Config.LangKey("gadgetronig.config.speed")
 	@Config.RangeDouble(min = 0.02, max = 0.2)
-	public double speedT1 = 0.02;
+	public double speedT1 = 0.05;
 	
 	@Config.Name("Magnet T1 Range")
 	@Config.LangKey("gadgetronig.config.range")
