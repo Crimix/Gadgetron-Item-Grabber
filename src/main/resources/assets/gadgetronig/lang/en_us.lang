@@ -1,18 +1,18 @@
 //Items
-item.gadgetronig:magnett1.name=Item grabber V1
-item.gadgetronig:magnett2.name=Item grabber V2
-item.gadgetronig:coret1.name=Magnetic core V1
-item.gadgetronig:coret2.name=Magnetic core V2
+item.gadgetronig:magnett1.name=Item Grabber V1
+item.gadgetronig:magnett2.name=Item Grabber V2
+item.gadgetronig:coret1.name=Magnetic Core V1
+item.gadgetronig:coret2.name=Magnetic Core V2
 item.gadgetronig:screent1.name=Screen V1
 item.gadgetronig:screent2.name=Screen V2
-item.gadgetronig:platet1.name=Button plate V1
-item.gadgetronig:platet2.name=Button plate V2
+item.gadgetronig:platet1.name=Button Plate V1
+item.gadgetronig:platet2.name=Button Plate V2
 item.gadgetronig:caset1.name=Casing V1
 item.gadgetronig:caset2.name=Casing V2
 item.gadgetronig:belt.name=Belt
-item.gadgetronig:beltt1.name=Belt grabber V1
-item.gadgetronig:beltt2.name=Belt grabber V2
-item.gadgetronig:blackleather.name=Titanium reinforced black leather
+item.gadgetronig:beltt1.name=Belt Grabber V1
+item.gadgetronig:beltt2.name=Belt Grabber V2
+item.gadgetronig:blackleather.name=Titanium Reinforced Black Leather
 
 //Info Items
 magnet.info.start=The item grabber can be activated using the default key §9M§r key, when activated the texture will change and if not disabled a green magnet icon will appear. 
