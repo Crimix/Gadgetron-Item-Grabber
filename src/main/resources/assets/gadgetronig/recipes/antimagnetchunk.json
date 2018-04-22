@@ -8,7 +8,7 @@
 	"key": {
 		"t": {
 			"type": "forge:ore_dict",
-			"ore": "ingotTrillium"
+			"ore": "ingotCarbonox"
 		},
 		"a": {
 			"item": "gadgetronig:antimagnetall"
