@@ -24,7 +24,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = Reference.DEPENDENCIES, acceptedMinecraftVersions = Reference.MC_VERSIONS)
 public class Grabber {
@@ -75,7 +74,5 @@ public class Grabber {
 	
 	public void SetupMagnet(){
 		GrabberApi.addBlacklistedItem(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));
-		GrabberApi.addEntityItemHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
-		GrabberApi.addEntityPlayerHandler((x) -> Loader.isModLoaded("botania") && SubTileSolegnolia.hasSolegnoliaAround(x));
 	}
 }

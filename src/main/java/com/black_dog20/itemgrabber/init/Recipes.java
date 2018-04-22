@@ -30,6 +30,13 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.belt, new Object[] { "lll", "ttt", "lll", 't', "ingotTitanium" , 'l', ModItems.blackLeather }));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.beltT1, ModItems.belt, ModItems.magnetT1));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.beltT2, ModItems.belt, ModItems.magnetT2));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.AntiMagnetChunk, new Object[] { "tat", "ata", "tat", 'a', ModBlocks.AntiMagnetAll, 't', "ingotCarbonox" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.AntiMagnetAll, new Object[] { "sss", "scs", "sss", 's', new ItemStack(Blocks.STONE_SLAB, 1, 0) , 'c', ModItems.coreT2 }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModBlocks.AntiMagnetAll, ModBlocks.AntiMagnetDown));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModBlocks.AntiMagnetUp, ModBlocks.AntiMagnetAll));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModBlocks.AntiMagnetDown, ModBlocks.AntiMagnetUp));
+
 	}
 
 }

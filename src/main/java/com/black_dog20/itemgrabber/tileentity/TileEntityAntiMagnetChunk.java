@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.black_dog20.itemgrabber.capability.IMagnetHandler;
 import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.reference.AntiType;
 import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 
@@ -15,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.chunk.Chunk;
 
 public class TileEntityAntiMagnetChunk extends TileEntity implements ITickable{
