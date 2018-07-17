@@ -3,23 +3,25 @@ package com.black_dog20.itemgrabber.utility;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.black_dog20.gadgetron.api.API;
+import com.black_dog20.gadgetron.capability.BeltHandler;
+import com.black_dog20.gadgetron.capability.IBeltHandler;
 import com.black_dog20.itemgrabber.Grabber;
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.init.ModItems;
 import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
 import com.google.common.base.Predicate;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.Vec3d;
 
 public class MagnetHelper {
 	private static final List<ResourceLocation> blackListedItems = new ArrayList<ResourceLocation>();
@@ -88,7 +90,7 @@ public class MagnetHelper {
 	
 
 	public static void checkIfMagnetShouldBeTempOff(EntityPlayer player) {
-		IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+		IBeltHandler mh = player.getCapability(BeltHandler.CAP, null);
 		NBTTagCompound nbt = player.getEntityData();
 		for(Predicate<EntityPlayer> p : extranlAntigrabbers) {
 			if(p.apply(player)) {
@@ -102,8 +104,8 @@ public class MagnetHelper {
 
 	public static Predicate<EntityPlayer> hasMagnetOnCheck(){
 		return ((x) -> {
-			IMagnetHandler mh = x.getCapability(MagnetHandler.CAP, null);
-			return mh!= null && (hasMagnetInInventory(x) || mh.getHasBelt()) && mh.getHasMagnetOn();
+			IBeltHandler mh = x.getCapability(BeltHandler.CAP, null);
+			return mh!= null && hasMagnetInInventory(x) && mh.getHasMagnetOn();
 		});
 	}
 	
@@ -115,45 +117,15 @@ public class MagnetHelper {
 	
 	public static int getRange(EntityPlayer player){
 		int result = 0;
-		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT1)))
+		if(API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)))
 			result = getRange(1);
 
-		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2)))
+		if(API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)))
 			result = getRange(2);
 		
-		IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
-		if(mh != null && mh.getHasBelt())
-			result = getRange(mh.getTier());
-		
 		return result;
 	}
 	
-	public static double getSpeed(EntityPlayer player){
-		double result = 0;
-		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT1)))
-			result = getSpeed(1);
-		
-		if(player.inventory.hasItemStack(new ItemStack(ModItems.magnetT2)))
-			result = getSpeed(2);
-		
-		IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
-		if(mh != null && mh.getHasBelt())
-			result = getSpeed(mh.getTier());
-		
-		return result;
-	}
-	
-	public static double getSpeed(int tier){
-		switch (tier) {
-		case 1:
-			return Grabber.Proxy.getServerConfig().speedT1;
-		case 2:
-			return Grabber.Proxy.getServerConfig().speedT2;
-			
-		default:
-			return 0;
-		}
-	}
 	
 	public static int getRange(int tier){
 		switch (tier) {
@@ -167,22 +139,11 @@ public class MagnetHelper {
 		}
 	}
 	
-	public static int getBeltTier(EntityPlayer player){
-		int result = 0;
-		InventoryPlayer ip = player.inventory;
-		if(ip.hasItemStack(new ItemStack(ModItems.beltT1)))
-			result = 1;
-		if(ip.hasItemStack(new ItemStack(ModItems.beltT2)))
-			result = 2;
-		return result;
-	}
-	
 	
 	public static boolean hasMagnetInInventory(EntityPlayer player){
 		boolean result = false;
-		InventoryPlayer ip = player.inventory;
-		result = ip.hasItemStack(new ItemStack(ModItems.magnetT1)) && !result ? true : result;
-		result = ip.hasItemStack(new ItemStack(ModItems.magnetT2)) && !result ? true : result;
+		result = API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)) && !result ? true : result;
+		result = API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)) && !result ? true : result;
 		return result;
 	}
 	
@@ -209,5 +170,19 @@ public class MagnetHelper {
 
         return result;
     }
+    
+    public static void setEntityMotion(Entity entity, double x, double y, double z, float speedModifier) {
+    	Vec3d entityVec = new Vec3d(entity.posX, entity.posY- entity.getYOffset() + entity.height / 2, entity.posZ);
+    	Vec3d finalVec = new Vec3d(x-entityVec.x, y-entityVec.y, z-entityVec.z);
+    	
+    	if(finalVec.lengthVector() > 1)
+    		finalVec = finalVec.normalize();
+    	
+    	entity.motionX = finalVec.x * speedModifier;
+    	entity.motionY = finalVec.y * speedModifier;
+    	entity.motionZ = finalVec.z * speedModifier;
+    }
+    
+    
 
 }

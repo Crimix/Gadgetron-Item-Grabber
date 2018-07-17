@@ -22,17 +22,13 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(ModConfig.server.rangeT1);
-		buf.writeDouble(ModConfig.server.speedT1);
 		buf.writeInt(ModConfig.server.rangeT2);
-		buf.writeDouble(ModConfig.server.speedT2);
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		ServerConfig.onServer = true;
 		ServerConfig.server.rangeT1 = buf.readInt();
-		ServerConfig.server.speedT1 = buf.readDouble();
 		ServerConfig.server.rangeT2 = buf.readInt();
-		ServerConfig.server.speedT2 = buf.readDouble();
 	}
 }

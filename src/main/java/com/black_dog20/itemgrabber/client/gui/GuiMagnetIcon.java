@@ -1,7 +1,7 @@
 package com.black_dog20.itemgrabber.client.gui;
 
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.gadgetron.capability.BeltHandler;
+import com.black_dog20.gadgetron.capability.IBeltHandler;
 import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.reference.Reference;
 import com.black_dog20.itemgrabber.utility.MagnetHelper;
@@ -92,7 +92,7 @@ public class GuiMagnetIcon extends Gui{
 		GlStateManager.color(1F, 1F, 1F);
 		GlStateManager.disableLighting();
 		GlStateManager.enableAlpha();
-		IMagnetHandler mh = MagnetHandler.instanceFor(mc.player);
+		IBeltHandler mh = BeltHandler.instanceFor(mc.player);
 		if(mh != null){
 			if(((mh.getHasMagnetOn() && mh.getSneakDeactivate() && mc.player.isSneaking()) || mh.getTempOff() ) && (MagnetHelper.hasMagnetInInventory(mc.player) || mh.getHasBelt())){
 				mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/magnetsneak.png"));

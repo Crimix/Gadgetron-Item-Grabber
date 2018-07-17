@@ -1,7 +1,7 @@
 package com.black_dog20.itemgrabber.network.message;
 
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.gadgetron.capability.BeltHandler;
+import com.black_dog20.gadgetron.capability.IBeltHandler;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +17,9 @@ public class MessageUpdateMagnetState implements IMessage, IMessageHandler<Messa
 	public IMessage onMessage(MessageUpdateMagnetState message, MessageContext ctx) {
 		EntityPlayer player = ctx.getServerHandler().player;
 		player.getServer().addScheduledTask(() -> {
-			IMagnetHandler mh = MagnetHandler.instanceFor(player);
-			mh.setHasMagnetOn(!mh.getHasMagnetOn());
+			IBeltHandler mh = BeltHandler.instanceFor(player);
+			if(mh!= null)
+				mh.setHasMagnetOn(!mh.getHasMagnetOn());
 		});
 		return null;
 	}
