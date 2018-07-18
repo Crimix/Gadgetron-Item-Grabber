@@ -44,6 +44,7 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 		this.tier = tier;
 		this.setMaxStackSize(1);
 		MinecraftForge.EVENT_BUS.register(this);
+		registerEquipment(this);
 		
 		this.addPropertyOverride(new ResourceLocation("state"), new IItemPropertyGetter() {
 			
@@ -103,7 +104,7 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 	}
 
 	@Override
-	public SpecialEquipmentType getype() {
+	public SpecialEquipmentType getType() {
 		return SpecialEquipmentType.MAGNET;
 	}	
 	

@@ -13,7 +13,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class Recipes {
 
 	public static void init() {
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.coreT1, new Object[] { "awa", "rcr", "twt", 't', "plateTrillium" , 'r', "shardRaritanium", 'a',"plateAdamantine", 'w', "wireConductingMetal" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.coreT1, new Object[] { "awa", "rcr", "twt", 't', "plateTrillium" , 'r', "shardRaritanium", 'a',"plateAdamantine", 'w', "wireConductingMetal" , 'c', "crystalRaritanium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.screenT1, new Object[] { "pgp", "gsg", "pgp", 'g', new ItemStack(Blocks.STAINED_GLASS_PANE, 1,11) , 'p', "plateTitanium", 's', "silicon" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.plateT1, new Object[] { " r ", "rar", " r ", 'a', "plateAdamantine", 'r', new ItemStack(Items.DYE,1,1) }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.caseT1, new Object[] { "tat", "pcp", "ttt", 't', "ingotTitanium", 'a', "ingotAdamantine", 'p', ModItems.plateT1, 'c', "plateCarbonox" }));

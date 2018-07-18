@@ -3,7 +3,7 @@ package com.black_dog20.itemgrabber.utility;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.black_dog20.gadgetron.api.API;
+import com.black_dog20.gadgetron.api.GadgetronAPI;
 import com.black_dog20.gadgetron.capability.BeltHandler;
 import com.black_dog20.gadgetron.capability.IBeltHandler;
 import com.black_dog20.itemgrabber.Grabber;
@@ -115,10 +115,10 @@ public class MagnetHelper {
 	
 	public static int getRange(EntityPlayer player){
 		int result = 0;
-		if(API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)))
+		if(GadgetronAPI.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)))
 			result = getRange(1);
 
-		if(API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)))
+		if(GadgetronAPI.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)))
 			result = getRange(2);
 		
 		return result;
@@ -140,8 +140,8 @@ public class MagnetHelper {
 	
 	public static boolean hasMagnetInInventory(EntityPlayer player){
 		boolean result = false;
-		result = API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)) && !result ? true : result;
-		result = API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)) && !result ? true : result;
+		result = GadgetronAPI.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)) && !result ? true : result;
+		result = GadgetronAPI.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)) && !result ? true : result;
 		result = player.getEntityData().getBoolean(NBTTags.HAS_MAGNET) && !result ? true : result;
 		return result;
 	}
