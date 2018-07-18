@@ -20,7 +20,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 
 public class MagnetHelper {
@@ -61,9 +60,8 @@ public class MagnetHelper {
 				return true;
 
 			int range = Math.max(ModConfig.server.rangeT1, ModConfig.server.rangeT2);
-			EntityPlayer nearest = findNearestEntityWithinAABB(x, 
-					new AxisAlignedBB(x.posX - range, x.posY - range, x.posZ - range, x.posX + range, x.posY + range, x.posZ + range));
-
+			EntityPlayer nearest = findNearestEntityWithinAABB(x, range); 
+	
 			if(nearest != null){
 				if(nearest.getName().equals(player.getName()))
 					return true;
@@ -144,33 +142,20 @@ public class MagnetHelper {
 		boolean result = false;
 		result = API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)) && !result ? true : result;
 		result = API.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)) && !result ? true : result;
+		result = player.getEntityData().getBoolean(NBTTags.HAS_MAGNET) && !result ? true : result;
 		return result;
 	}
 	
-    public static EntityPlayer findNearestEntityWithinAABB(EntityItem item, AxisAlignedBB aabb)
+    public static EntityPlayer findNearestEntityWithinAABB(EntityItem item, double distance)
     {
-        List<EntityPlayer> list = item.getEntityWorld().getEntitiesWithinAABB(EntityPlayer.class, aabb);
-        EntityPlayer result = null;
-        double shortestDistance = Double.MAX_VALUE;
-
-        for (EntityPlayer player : list)
-        {
-            if (hasMagnetOnCheck().apply(player) && canPickUp(item.getEntityData(),player))
-            {
-            	int range = getRange(player);
-                double testDistance = item.getDistanceToEntity(player);
-
-                if (testDistance <= shortestDistance && testDistance <= range)
-                {
-                    result = player;
-                    shortestDistance = testDistance;
-                }
-            }
-        }
-
-        return result;
+    	return item.getEntityWorld().getClosestPlayer(item.posX, item.posY, item.posZ, distance, ((x) -> {return hasMagnetOnCheck().apply((EntityPlayer)x) && canPickUp(item.getEntityData(),(EntityPlayer)x);}));
     }
     
+    /**
+     * Method inspired heavily by what Vazkii did in Botania
+     * https://github.com/Vazkii/Botania/blob/1.11/src/main/java/vazkii/botania/common/core/helper/MathHelper.java
+     * The principle is the same and it is used to get a smooth motion
+     */
     public static void setEntityMotion(Entity entity, double x, double y, double z, float speedModifier) {
     	Vec3d entityVec = new Vec3d(entity.posX, entity.posY- entity.getYOffset() + entity.height / 2, entity.posZ);
     	Vec3d finalVec = new Vec3d(x-entityVec.x, y-entityVec.y, z-entityVec.z);

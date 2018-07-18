@@ -30,18 +30,16 @@ public class EventHandler {
 	
 	@SubscribeEvent
 	public void onItemPickup(EntityItemPickupEvent event){
-		if(!event.getEntity().world.isRemote){
+		if(event.getEntity().world.isRemote) return;
 			NBTTagCompound nbt = event.getEntity().getEntityData();
 			nbt.removeTag(NBTTags.PICKUP_IN);
 			nbt.removeTag(NBTTags.DROPPED_BY);
 			nbt.removeTag(NBTTags.TRACKED_BY);
 			nbt.removeTag(NBTTags.BLOCKED);
-		}
 	}
 	
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent event){
-		if(event.world.isRemote) return;
 		for(EntityItem e : event.world.getEntities(EntityItem.class, MagnetHelper.hasPickUpInTag())){
 			NBTTagCompound nbt = e.getEntityData();
 			if(nbt.getInteger(NBTTags.PICKUP_IN) <= 0){
