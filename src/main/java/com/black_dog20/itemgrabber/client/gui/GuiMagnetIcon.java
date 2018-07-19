@@ -1,6 +1,5 @@
 package com.black_dog20.itemgrabber.client.gui;
 
-import com.black_dog20.gadgetron.Gadgetron;
 import com.black_dog20.gadgetron.capability.BeltHandler;
 import com.black_dog20.gadgetron.capability.IBeltHandler;
 import com.black_dog20.itemgrabber.config.ModConfig;
