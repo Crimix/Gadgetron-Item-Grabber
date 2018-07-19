@@ -116,6 +116,10 @@ curseforge {
   apiKey = priv.apiKey
   project {
     id = '289739'
+    relations {
+        requiredLibrary 'gadgetron'
+    }
+    changelogType = 'markdown'
 	changelog = file('changelog.txt')
     releaseType = 'release'
     addGameVersion 'Java 8'
