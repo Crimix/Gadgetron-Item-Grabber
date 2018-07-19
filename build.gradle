@@ -126,6 +126,7 @@ curseforge {
      relations {
         requiredLibrary 'gadgetron'
       }
+    changelogType = 'markdown'
 	changelog = file('changelog.txt')
     releaseType = 'release'
     addGameVersion 'Java 8'
