@@ -137,6 +137,30 @@ public class MagnetHelper {
 		}
 	}
 	
+	public static double getSpeed(EntityPlayer player){
+		double result = 0;
+		if(GadgetronAPI.isItemStackInInventory(player, new ItemStack(ModItems.magnetT1)))
+			result = getSpeed(1);
+
+		if(GadgetronAPI.isItemStackInInventory(player, new ItemStack(ModItems.magnetT2)))
+			result = getSpeed(2);
+		
+		return result;
+	}
+	
+	
+	public static double getSpeed(int tier){
+		switch (tier) {
+		case 1:
+			return Grabber.Proxy.getServerConfig().speedT1;
+		case 2:
+			return Grabber.Proxy.getServerConfig().speedT2;
+			
+		default:
+			return 0;
+		}
+	}
+	
 	
 	public static boolean hasMagnetInInventory(EntityPlayer player){
 		boolean result = false;
@@ -166,6 +190,7 @@ public class MagnetHelper {
     	entity.motionX = finalVec.x * speedModifier;
     	entity.motionY = finalVec.y * speedModifier;
     	entity.motionZ = finalVec.z * speedModifier;
+    	
     }
     
     

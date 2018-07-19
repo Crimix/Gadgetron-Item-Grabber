@@ -8,6 +8,7 @@ import com.black_dog20.gadgetron.api.ISpecialEquipment;
 import com.black_dog20.gadgetron.capability.BeltHandler;
 import com.black_dog20.gadgetron.capability.IBeltHandler;
 import com.black_dog20.itemgrabber.client.settings.Keybindings;
+import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.network.PacketHandler;
 import com.black_dog20.itemgrabber.network.message.MessageSynEntityNBT;
 import com.black_dog20.itemgrabber.network.message.MessageSynEntityPlayerNBT;
@@ -83,25 +84,29 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		TextComponentTranslation press = new TextComponentTranslation("tooltip.gadgetronig:press");
-
+TextComponentTranslation press = new TextComponentTranslation("tooltip.gadgetronig:press");
+		
 		TextComponentTranslation activate = new TextComponentTranslation("tooltip.gadgetronig:activate");
 		TextComponentTranslation range = new TextComponentTranslation("tooltip.gadgetronig:range");
+		TextComponentTranslation speed = new TextComponentTranslation("tooltip.gadgetronig:speed");
 		TextComponentTranslation blocks = new TextComponentTranslation("tooltip.gadgetronig:blocks");
 		blocks.getStyle().setColor(TextFormatting.WHITE);
+		TextComponentTranslation sec = new TextComponentTranslation("tooltip.gadgetronig:sec");
+		sec.getStyle().setColor(TextFormatting.WHITE);
+		TextComponentTranslation tick = new TextComponentTranslation("tooltip.gadgetronig:tick");
+		tick.getStyle().setColor(TextFormatting.WHITE);
 		TextComponentTranslation active = new TextComponentTranslation("tooltip.gadgetronig:active");
 		TextComponentTranslation sneak = new TextComponentTranslation("tooltip.gadgetronig:sneak");
 		TextComponentTranslation on = new TextComponentTranslation("tooltip.gadgetronig:on");
 		on.getStyle().setColor(TextFormatting.GREEN);
 		TextComponentTranslation off = new TextComponentTranslation("tooltip.gadgetronig:off");
 		off.getStyle().setColor(TextFormatting.RED);
-
+		
 		tooltip.add(press.getFormattedText() + "§9" + Keybindings.ON.getDisplayName() + "§r §7" + activate.getFormattedText()+ "§r");
 		tooltip.add("");
-
+		
 		if(Minecraft.getMinecraft().player != null) {
-
-			IBeltHandler mh = BeltHandler.instanceFor(Minecraft.getMinecraft().player);
+			IBeltHandler mh = Minecraft.getMinecraft().player.getCapability(BeltHandler.CAP, null);
 			if(mh != null){
 				TextComponentTranslation activeState = mh.getHasMagnetOn() ? on : off;
 				TextComponentTranslation sneakState = mh.getSneakDeactivate() ? on : off;
@@ -109,6 +114,11 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 				tooltip.add(sneak.getFormattedText() + ": " + sneakState.getFormattedText());
 			}
 			tooltip.add(range.getFormattedText() + ": " + MagnetHelper.getRange(tier) + " " + blocks.getFormattedText());
+			if(ModConfig.client.blockPerSec)
+				tooltip.add(speed.getFormattedText() + ": "+ (MagnetHelper.getSpeed(tier)*20) + " " + blocks.getFormattedText() + "/" + sec.getFormattedText());
+			else
+				tooltip.add(speed.getFormattedText() + ": " + MagnetHelper.getSpeed(tier) + " " + blocks.getFormattedText() + "/" + tick.getFormattedText());
+		
 		}
 
 	}	
@@ -182,7 +192,7 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 		}
 	}
 	
-
+	int i = 0;
 	@SubscribeEvent
 	public void onMagnetTryToAttractItem(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
@@ -198,13 +208,14 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 				double playerX = player.posX;
 				double playerY = (player.posY + 0.75);
 				double playerZ = player.posZ;
-
+				double speed = MagnetHelper.getSpeed(tier);
+				
 				List<EntityItem> floatingItems = player.getEntityWorld().getEntitiesWithinAABB(EntityItem.class, 
 						new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range), MagnetHelper.floatingItemsToPickUp(player));
 				int pulledItems = 0;
 				for (EntityItem entityItem : floatingItems) {
 					if(pulledItems > 200) break;
-					MagnetHelper.setEntityMotion(entityItem, playerX, playerY, playerZ, 0.45F);
+					MagnetHelper.setEntityMotion(entityItem, playerX, playerY, playerZ, (float) speed);
 					entityItem.getEntityData().setString(NBTTags.TRACKED_BY, player.getName());
 					pulledItems++;
 				}
@@ -226,11 +237,12 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 				double playerX = player.posX;
 				double playerY = (player.posY + 0.75);
 				double playerZ = player.posZ;
+				double speed = MagnetHelper.getSpeed(tier);
 
 				List<EntityXPOrb> floatingXP = player.getEntityWorld().getEntitiesWithinAABB(EntityXPOrb.class, 
 						new AxisAlignedBB(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range));
 				for (EntityXPOrb entityXP : floatingXP) {
-					MagnetHelper.setEntityMotion(entityXP, playerX, playerY, playerZ, 0.45F);
+					MagnetHelper.setEntityMotion(entityXP, playerX, playerY, playerZ, (float) speed);
 				}
 			}
 		}
