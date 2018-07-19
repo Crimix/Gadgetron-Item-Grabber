@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "pgp",
+    "gsg",
+    "pgp"
+  ],
+  "key": {
+    "p": {
+      "type": "forge:ore_dict",
+      "ore": "plateTitanium"
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "silicon"
+    },
+    "g": {
+      "item": "minecraft:stained_glass_pane",
+      "data": 11
+    }
+  },
+  "result": {
+    "item": "gadgetronig:screent1"
+  }
+}

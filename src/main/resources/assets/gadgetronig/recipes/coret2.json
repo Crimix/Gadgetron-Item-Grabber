@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "rwr",
+    "rcr",
+    "rwr"
+  ],
+  "key": {
+    "r": {
+      "type": "forge:ore_dict",
+      "ore": "crystalRaritanium"
+    },
+    "c": {
+      "item": "gadgetronig:coret1"
+    },
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "wireConductingMetal"
+    }
+  },
+  "result": {
+    "item": "gadgetronig:coret2"
+  }
+}

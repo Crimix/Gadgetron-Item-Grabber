@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gadgetronig:screent2"
+    },
+    {
+      "item": "gadgetronig:caset2"
+    },
+    {
+      "item": "gadgetronig:coret2"
+    }
+  ],
+  "result": {
+    "item": "gadgetronig:magnett2"
+  }
+}

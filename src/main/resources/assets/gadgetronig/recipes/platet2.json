@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "aaa",
+    "apa",
+    "aaa"
+  ],
+  "key": {
+    "p": {
+      "item": "gadgetronig:platet1"
+    },
+    "a": {
+      "type": "forge:ore_dict",
+      "ore": "plateAdamantine"
+    }
+  },
+  "result": {
+    "item": "gadgetronig:platet2"
+  }
+}

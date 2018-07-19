@@ -1,20 +1,24 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"sss",
-		"scs",
-		"sss"
-	],
-	"key": {
-		"s": {
-			"item": "minecraft:stone_slab",
-			"data": 0
-		},
-		"c": {
-			"item": "gadgetronig:coret2"
-		}
-	},
-	"result": {
-		"item": "gadgetronig:antimagnetall"
-	}
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "sps",
+    "scs",
+    "sps"
+  ],
+  "key": {
+    "p": {
+      "type": "forge:ore_dict",
+      "ore": "plateCarbonox"
+    },
+    "s": {
+      "item": "minecraft:stone_slab",
+      "data": 0
+    },
+    "c": {
+      "item": "gadgetronig:coret2"
+    }
+  },
+  "result": {
+    "item": "gadgetronig:antimagnetall"
+  }
 }

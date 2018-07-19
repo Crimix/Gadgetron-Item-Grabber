@@ -1,21 +1,26 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "twt",
-    "sas",
+    "awa",
+    "rcr",
     "twt"
   ],
   "key": {
     "a": {
-      "item": "gadgetronig:antimagnetall"
+      "type": "forge:ore_dict",
+      "ore": "plateAdamantine"
     },
-    "s": {
+    "r": {
       "type": "forge:ore_dict",
       "ore": "shardRaritanium"
     },
+    "c": {
+      "type": "forge:ore_dict",
+      "ore": "crystalRaritanium"
+    },
     "t": {
       "type": "forge:ore_dict",
-      "ore": "plateCarbonox"
+      "ore": "plateTrillium"
     },
     "w": {
       "type": "forge:ore_dict",
@@ -23,6 +28,6 @@
     }
   },
   "result": {
-    "item": "gadgetronig:antimagnetchunk"
+    "item": "gadgetronig:coret1"
   }
 }

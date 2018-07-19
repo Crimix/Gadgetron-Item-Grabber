@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " r ",
+    "rar",
+    " r "
+  ],
+  "key": {
+    "a": {
+      "type": "forge:ore_dict",
+      "ore": "plateAdamantine"
+    },
+    "r": {
+      "item": "minecraft:dye",
+      "data": 1
+    }
+  },
+  "result": {
+    "item": "gadgetronig:platet1"
+  }
+}

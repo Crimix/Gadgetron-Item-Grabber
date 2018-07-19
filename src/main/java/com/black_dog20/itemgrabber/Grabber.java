@@ -2,6 +2,7 @@ package com.black_dog20.itemgrabber;
 
 import org.apache.logging.log4j.Logger;
 
+import com.black_dog20.itemgrabber.init.Recipes;
 import com.black_dog20.itemgrabber.api.GrabberApi;
 import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.handler.GuiHandler;
@@ -47,6 +48,7 @@ public class Grabber {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		Proxy.registerKeyInputHandler();
+		Recipes.init();
 		
 		logger.info("Initialization Complete!");
 }

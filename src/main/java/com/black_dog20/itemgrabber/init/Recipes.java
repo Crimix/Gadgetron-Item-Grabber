@@ -6,6 +6,7 @@ import com.black_dog20.itemgrabber.reference.Reference;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -13,13 +14,15 @@ public class Recipes {
 
 	public static void init() {
 		
+		//generateJSON();
 		
 	}
 	
 	@SuppressWarnings("unused")
-	private void generateJSON() {
-
-		RecipeToJSON toJSON = new RecipeToJSON(Reference.MOD_NAME, true);
+	private static void generateJSON() {
+		Boolean devEnv = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+		if(!devEnv) return;
+		RecipeToJSON toJSON = new RecipeToJSON(Reference.MOD_ID, true);
 		
 		toJSON.addShapedRecipe(ModItems.coreT1, new Object[] { "awa", "rcr", "twt", 't', "plateTrillium" , 'r', "shardRaritanium", 'a',"plateAdamantine", 'w', "wireConductingMetal" , 'c', "crystalRaritanium"});
 		toJSON.addShapedRecipe(ModItems.screenT1, new Object[] { "pgp", "gsg", "pgp", 'g', new ItemStack(Blocks.STAINED_GLASS_PANE, 1,11) , 'p', "plateTitanium", 's', "silicon" });

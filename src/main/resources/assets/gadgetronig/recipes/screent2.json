@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ggg",
+    "gsg",
+    "ggg"
+  ],
+  "key": {
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "silicon"
+    },
+    "g": {
+      "item": "minecraft:stained_glass_pane",
+      "data": 5
+    }
+  },
+  "result": {
+    "item": "gadgetronig:screent2"
+  }
+}

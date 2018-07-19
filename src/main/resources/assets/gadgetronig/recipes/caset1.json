@@ -1,28 +1,28 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "twt",
-    "sas",
-    "twt"
+    "tat",
+    "pcp",
+    "ttt"
   ],
   "key": {
+    "p": {
+      "item": "gadgetronig:platet1"
+    },
     "a": {
-      "item": "gadgetronig:antimagnetall"
-    },
-    "s": {
       "type": "forge:ore_dict",
-      "ore": "shardRaritanium"
+      "ore": "ingotAdamantine"
     },
-    "t": {
+    "c": {
       "type": "forge:ore_dict",
       "ore": "plateCarbonox"
     },
-    "w": {
+    "t": {
       "type": "forge:ore_dict",
-      "ore": "wireConductingMetal"
+      "ore": "ingotTitanium"
     }
   },
   "result": {
-    "item": "gadgetronig:antimagnetchunk"
+    "item": "gadgetronig:caset1"
   }
 }
