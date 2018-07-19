@@ -67,7 +67,7 @@ repositories {
 dependencies {
 	deobfProvided  "mezz.jei:jei_${mcversion}:${jei_version}:api"
 	runtime "mezz.jei:jei_${mcversion}:${jei_version}"
-	compile "gadgetron:Gadgetron:${mcversion}:${gadgetron_version}"
+	deobfCompile "gadgetron:Gadgetron-${mcversion}:${gadgetron_version}:deobf"
 
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
