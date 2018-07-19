@@ -3,8 +3,8 @@ package com.black_dog20.itemgrabber.tileentity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
+import com.black_dog20.gadgetron.capability.BeltHandler;
+import com.black_dog20.gadgetron.capability.IBeltHandler;
 import com.black_dog20.itemgrabber.reference.AntiType;
 import com.black_dog20.itemgrabber.reference.Constants;
 import com.black_dog20.itemgrabber.reference.NBTTags;
@@ -57,26 +57,26 @@ public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 		range++;
 		if(type == AntiType.UP) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
-					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1), pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, pos.getY(), pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
 		
 			players = this.world.getEntitiesWithinAABB(EntityPlayer.class, 
-					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1), pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, pos.getY(), pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
 		
 		}
 		if(type == AntiType.DOWN) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
-					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
 			
 			players = this.world.getEntitiesWithinAABB(EntityPlayer.class, 
-					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY(), pos.getZ() + range));
 
 		}
 		if(type == AntiType.ALL) {
 			floatingItems = this.world.getEntitiesWithinAABB(EntityItem.class, 
-					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
 			
 			players = this.world.getEntitiesWithinAABB(EntityPlayer.class, 
-					new AxisAlignedBB(pos.getX() - range, (pos.getY()-1) - range, pos.getZ() - range, pos.getX()+ range, (pos.getY()-1) + range, pos.getZ() + range));
+					new AxisAlignedBB(pos.getX() - range, pos.getY() - range, pos.getZ() - range, pos.getX()+ range, pos.getY() + range, pos.getZ() + range));
 
 		}
 		
@@ -85,7 +85,7 @@ public class TileEntityAntiMagnet extends TileEntity implements ITickable{
 		}
 		
 		for(EntityPlayer player : players) {
-			IMagnetHandler mh = player.getCapability(MagnetHandler.CAP, null);
+			IBeltHandler mh = player.getCapability(BeltHandler.CAP, null);
 			if(mh != null && !mh.getTempOff()) {
 				mh.setTempOff(true);
 			}

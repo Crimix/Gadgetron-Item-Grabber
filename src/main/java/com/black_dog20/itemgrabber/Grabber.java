@@ -3,10 +3,6 @@ package com.black_dog20.itemgrabber;
 import org.apache.logging.log4j.Logger;
 
 import com.black_dog20.itemgrabber.api.GrabberApi;
-import com.black_dog20.itemgrabber.capability.IMagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetHandler;
-import com.black_dog20.itemgrabber.capability.MagnetStorage;
-import com.black_dog20.itemgrabber.handler.CapabilityHandler;
 import com.black_dog20.itemgrabber.handler.EventHandler;
 import com.black_dog20.itemgrabber.handler.GuiHandler;
 import com.black_dog20.itemgrabber.network.PacketHandler;
@@ -15,7 +11,6 @@ import com.black_dog20.itemgrabber.reference.Reference;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -39,7 +34,6 @@ public class Grabber {
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
-		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		Proxy.registerKeyBindings();
 		PacketHandler.init();
 		Proxy.registerRendersPreInit();
@@ -53,8 +47,6 @@ public class Grabber {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		Proxy.registerKeyInputHandler();
-		Proxy.registerRendersInit();
-		CapabilityManager.INSTANCE.register(IMagnetHandler.class, new MagnetStorage(), new MagnetHandler.Factory());
 		
 		logger.info("Initialization Complete!");
 }
@@ -64,7 +56,7 @@ public class Grabber {
 
 		logger.info("Post Initialization Complete!");
 	}
-	
+
 	
 	public void SetupMagnet(){
 		GrabberApi.addBlacklistedItem(new ResourceLocation("appliedenergistics2", "item.ItemCrystalSeed"));

@@ -13,9 +13,15 @@ buildscript {
       		url "https://plugins.gradle.org/m2/"
     	}
     }
+<<<<<<< HEAD
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.10'
+=======
+    dependencies {
+       classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+       classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.10'
+>>>>>>> refs/remotes/origin/1.11
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -58,6 +64,10 @@ repositories {
         name = "CurseForge"
         url = "https://minecraft.curseforge.com/api/maven/"
   }
+      ivy {
+        name "Botania"
+        artifactPattern "http://botaniamod.net/files/deobf/[module]%20[revision]-deobf.[ext]"
+    }
 }
 
 dependencies {
@@ -116,6 +126,7 @@ curseforge {
 	changelog = file('changelog.txt')
     releaseType = 'release'
     addGameVersion 'Java 8'
+<<<<<<< HEAD
     addGameVersion '1.12'
     addGameVersion '1.12.1'
     addGameVersion '1.12.2'
@@ -142,3 +153,31 @@ def parseConfig(File config) {
         return (new ConfigSlurper().parse(prop))
     }
 }
+=======
+    addGameVersion '1.11'
+    addGameVersion '1.11.1'
+    addGameVersion '1.11.2'
+  }
+}
+
+task clearChangelog() {
+	doLast{
+		clearFile(file('changelog.txt'))
+	}
+}
+
+
+def clearFile(File f) {
+    f.withWriter  {
+    	writer -> writer.write('')
+    }
+}
+
+def parseConfig(File config) {
+    config.withReader {
+        def prop = new Properties()
+        prop.load(it)
+        return (new ConfigSlurper().parse(prop))
+    }
+}
+>>>>>>> refs/remotes/origin/1.11

@@ -9,14 +9,9 @@ item.gadgetronig:platet1.name=Button Plate V1
 item.gadgetronig:platet2.name=Button Plate V2
 item.gadgetronig:caset1.name=Casing V1
 item.gadgetronig:caset2.name=Casing V2
-item.gadgetronig:belt.name=Belt
-item.gadgetronig:beltt1.name=Belt Grabber V1
-item.gadgetronig:beltt2.name=Belt Grabber V2
-item.gadgetronig:blackleather.name=Titanium Reinforced Black Leather
 
 //Info Items
-magnet.info.start=The item grabber can be activated using the default key Â§9MÂ§r key, when activated the texture will change and if not disabled a green magnet icon will appear. 
-
+magnet.info.start=The item grabber can be activated using the default key §9M§r key, when activated the texture will change and if not disabled a green magnet icon will appear. 
 
 //Blocks
 tile.gadgetronig:antimagnetup.name=Anti grabber block (up)
@@ -28,10 +23,7 @@ tile.gadgetronig:antimagnetchunk.name=Anti grabber block (chunk)
 tooltip.gadgetronig:press=Press 
 tooltip.gadgetronig:activate=to activate
 tooltip.gadgetronig:range=Range
-tooltip.gadgetronig:speed=Speed
 tooltip.gadgetronig:blocks=blocks
-tooltip.gadgetronig:sec=sec
-tooltip.gadgetronig:tick=tick
 tooltip.gadgetronig:active=Magnet state
 tooltip.gadgetronig:sneak=Sneak mode
 tooltip.gadgetronig:on=On
@@ -47,8 +39,6 @@ tooltip.gadgetronig:antiRange=Range is counted from the block this is placed on
 tooltip.gadgetronig:antiRangeChange=Change the range by sneak + right clicking
 tooltip.gadgetronig:antiRangeChunk=Will cover the whole chunk and 7 blocks above and below
 
-tick
-
 //Container
 
 //Misc
@@ -57,7 +47,6 @@ itemGroup.gadgetronig=Gadgetron: Item Grabber
 
 //Configs
 gadgetronig.config.title=Gadgetron: Item Grabber
-gadgetronig.config.speed.tooltip=How fast the item grabber can attract
 gadgetronig.config.range.tooltip=How far the item grabber can attract
 gadgetronig.config.client=Client Settings
 gadgetronig.config.client.tooltip=Sneak setting affects the item grabber on a server
@@ -65,8 +54,6 @@ gadgetronig.config.server=Server Settings
 gadgetronig.config.server.tooltip=Gets sync to clients
 gadgetronig.config.sneak=Sneak deactivate
 gadgetronig.config.sneak.tooltip=If sneaking deactivates the item grabber temporarily
-gadgetronig.config.blockpersec=Blocks/sec
-gadgetronig.config.blockpersec.tooltip=If the speed should be shown in blocks/tick or blocks/sec
 gadgetronig.config.iconpos=Icon Position
 gadgetronig.config.iconpos.tooltip=Icon position for the active icon
 gadgetronig.config.iconpos.x=Width offset
@@ -78,11 +65,8 @@ gadgetronig.config.iconpos.hide.tooltip=Hides the icon
 gadgetronig.config.iconpos.position=Icon position
 
 
-
 //Keys
 keys.gadgetronig.category=Gadgetron: Item Grabber
 keys.gadgetronig.on=Toggle item grabber state
-keys.gadgetronig.take_off=Take belt off
 
 //MSG
-msg.already_have=You cannot equip another belt, take the first belt off, before trying again

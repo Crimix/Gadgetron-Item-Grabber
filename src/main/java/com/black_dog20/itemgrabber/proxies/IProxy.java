@@ -17,8 +17,6 @@ public interface IProxy {
 
 	public void registerRendersPreInit();
 	
-	public void registerRendersInit();
-	
 	public void ServerRecipes();
 
 	public Server getServerConfig();

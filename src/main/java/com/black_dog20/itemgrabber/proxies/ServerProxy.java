@@ -42,12 +42,6 @@ public class ServerProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public void registerRendersInit() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public Server getServerConfig(){

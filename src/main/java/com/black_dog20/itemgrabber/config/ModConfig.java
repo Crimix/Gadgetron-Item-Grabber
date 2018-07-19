@@ -23,9 +23,6 @@ public class ModConfig {
 		@Config.LangKey("gadgetronig.config.sneak")
 		public boolean sneak = false;
 		
-		@Config.LangKey("gadgetronig.config.blockpersec")
-		public boolean blockPerSec = false;
-		
 		@Config.LangKey("gadgetronig.config.iconpos")
 		public final HUDPos iconHUDPos = new HUDPos();
 		
