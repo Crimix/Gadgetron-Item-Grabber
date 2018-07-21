@@ -84,7 +84,7 @@ public class ItemMagnet extends ItemBase implements ISpecialEquipment{
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-TextComponentTranslation press = new TextComponentTranslation("tooltip.gadgetronig:press");
+		TextComponentTranslation press = new TextComponentTranslation("tooltip.gadgetronig:press");
 		
 		TextComponentTranslation activate = new TextComponentTranslation("tooltip.gadgetronig:activate");
 		TextComponentTranslation range = new TextComponentTranslation("tooltip.gadgetronig:range");
