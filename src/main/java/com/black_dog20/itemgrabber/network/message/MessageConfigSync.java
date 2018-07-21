@@ -4,7 +4,6 @@ import com.black_dog20.itemgrabber.config.ModConfig;
 import com.black_dog20.itemgrabber.config.ServerConfig;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;

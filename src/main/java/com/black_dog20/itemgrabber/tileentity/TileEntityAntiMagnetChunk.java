@@ -19,6 +19,7 @@ import net.minecraft.world.chunk.Chunk;
 public class TileEntityAntiMagnetChunk extends TileEntity implements ITickable{
 
 	public TileEntityAntiMagnetChunk() {
+		super();
 	}
 
 	@Override
