@@ -23,6 +23,8 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(ModConfig.server.rangeT1);
 		buf.writeInt(ModConfig.server.rangeT2);
+		buf.writeDouble(ModConfig.server.speedT1);
+		buf.writeDouble(ModConfig.server.speedT2);
 	}
 
 	@Override
@@ -30,5 +32,7 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 		ServerConfig.onServer = true;
 		ServerConfig.server.rangeT1 = buf.readInt();
 		ServerConfig.server.rangeT2 = buf.readInt();
+		ServerConfig.server.speedT1 = buf.readDouble();
+		ServerConfig.server.speedT2 = buf.readDouble();
 	}
 }
